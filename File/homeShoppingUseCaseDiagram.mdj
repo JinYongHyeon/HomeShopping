@@ -20806,7 +20806,7 @@
 											"font": "Arial;13;1",
 											"left": 949,
 											"top": 1351,
-											"width": 345.75048828125,
+											"width": 346.65185546875,
 											"height": 13,
 											"text": "UserListController"
 										},
@@ -20820,7 +20820,7 @@
 											"font": "Arial;13;0",
 											"left": -240,
 											"top": -128,
-											"width": 80.9072265625,
+											"width": 85.28076171875,
 											"height": 13,
 											"text": "(from Model1)"
 										},
@@ -20841,7 +20841,7 @@
 									"font": "Arial;13;0",
 									"left": 944,
 									"top": 1344,
-									"width": 355.75048828125,
+									"width": 356.65185546875,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF0TjhoWvw5Jck="
@@ -20878,7 +20878,7 @@
 											"font": "Arial;13;0",
 											"left": 949,
 											"top": 1374,
-											"width": 345.75048828125,
+											"width": 346.65185546875,
 											"height": 13,
 											"text": "-dao: UserDAO",
 											"horizontalAlignment": 0
@@ -20887,7 +20887,7 @@
 									"font": "Arial;13;0",
 									"left": 944,
 									"top": 1369,
-									"width": 355.75048828125,
+									"width": 356.65185546875,
 									"height": 23
 								},
 								{
@@ -20912,7 +20912,7 @@
 											"font": "Arial;13;0",
 											"left": 949,
 											"top": 1397,
-											"width": 345.75048828125,
+											"width": 346.65185546875,
 											"height": 13,
 											"text": "+execute(HttpServletRequest, HttpServletResponse): String",
 											"horizontalAlignment": 0
@@ -20921,7 +20921,7 @@
 									"font": "Arial;13;0",
 									"left": 944,
 									"top": 1392,
-									"width": 355.75048828125,
+									"width": 356.65185546875,
 									"height": 23
 								},
 								{
@@ -20961,7 +20961,7 @@
 							"containerChangeable": true,
 							"left": 944,
 							"top": 1344,
-							"width": 355.75048828125,
+							"width": 356.65185546875,
 							"height": 71,
 							"nameCompartment": {
 								"$ref": "AAAAAAF0TjhoWfw47Zg="
@@ -21020,9 +21020,9 @@
 											"font": "Arial;13;1",
 											"left": 949,
 											"top": 1439,
-											"width": 345.75048828125,
+											"width": 346.65185546875,
 											"height": 13,
-											"text": "UserFindByList"
+											"text": "UserFindByListController"
 										},
 										{
 											"_type": "LabelView",
@@ -21034,7 +21034,7 @@
 											"font": "Arial;13;0",
 											"left": -208,
 											"top": -240,
-											"width": 80.9072265625,
+											"width": 85.28076171875,
 											"height": 13,
 											"text": "(from Model1)"
 										},
@@ -21055,7 +21055,7 @@
 									"font": "Arial;13;0",
 									"left": 944,
 									"top": 1432,
-									"width": 355.75048828125,
+									"width": 356.65185546875,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF0Tjh81P2zRxo="
@@ -21092,7 +21092,7 @@
 											"font": "Arial;13;0",
 											"left": 949,
 											"top": 1462,
-											"width": 345.75048828125,
+											"width": 346.65185546875,
 											"height": 13,
 											"text": "-dao: UserDAO",
 											"horizontalAlignment": 0
@@ -21101,7 +21101,7 @@
 									"font": "Arial;13;0",
 									"left": 944,
 									"top": 1457,
-									"width": 355.75048828125,
+									"width": 356.65185546875,
 									"height": 23
 								},
 								{
@@ -21126,7 +21126,7 @@
 											"font": "Arial;13;0",
 											"left": 949,
 											"top": 1485,
-											"width": 345.75048828125,
+											"width": 346.65185546875,
 											"height": 13,
 											"text": "+execute(HttpServletRequest, HttpServletResponse): String",
 											"horizontalAlignment": 0
@@ -21135,7 +21135,7 @@
 									"font": "Arial;13;0",
 									"left": 944,
 									"top": 1480,
-									"width": 355.75048828125,
+									"width": 356.65185546875,
 									"height": 23
 								},
 								{
@@ -21175,7 +21175,7 @@
 							"containerChangeable": true,
 							"left": 944,
 							"top": 1432,
-							"width": 355.75048828125,
+							"width": 356.65185546875,
 							"height": 71,
 							"nameCompartment": {
 								"$ref": "AAAAAAF0Tjh81P2yHfM="
@@ -24429,7 +24429,7 @@
 					"_parent": {
 						"$ref": "AAAAAAF0R2jfkKQnKRA="
 					},
-					"name": "UserFindByList",
+					"name": "UserFindByListController",
 					"ownedElements": [
 						{
 							"_type": "UMLInterfaceRealization",
