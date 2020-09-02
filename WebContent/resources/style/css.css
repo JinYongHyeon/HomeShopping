@@ -1,0 +1,29 @@
+* {
+	margin: 0 auto;
+	padding: 0;
+	list-style: none;
+	font-family: "맑은고딕";
+}
+
+.container {
+	width: 1400px;
+	position: relative;
+}
+
+/* 관리자 CSS */
+#adminTable {
+	border-collapse: collapse;
+	text-align: center;
+}
+
+#adminTable tr th {
+	background-color: #5d9e3f;
+	color: #fff;
+	font-weight: bold;
+}
+
+#adminTable tr th, td {
+	border: 1px solid #000;
+	width: 10%;
+	padding:10px;
+}
