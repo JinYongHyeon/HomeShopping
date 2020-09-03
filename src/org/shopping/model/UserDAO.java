@@ -19,7 +19,7 @@ public class UserDAO {
 	public static UserDAO getInstance() {
 		return instance;
 	}
-	
+
 	public void closeAll(ResultSet rs, PreparedStatement pstmt, Connection con) throws SQLException {
 		if (rs != null)
 			rs.close();
@@ -29,23 +29,26 @@ public class UserDAO {
 			con.close();
 
 	}
+
 	/**
-	 * Oracle DB연결 
+	 * Oracle DB연결
+	 * 
 	 * @return
 	 * @throws SQLException
 	 */
 	public Connection getConnection() throws SQLException {
 		return DriverManager.getConnection(dbUrl, userName, userPass);
 	}
-	
+
 	/**
 	 * 회원가입
+	 * 
 	 * @param vo
 	 * @throws SQLException
 	 */
 	public void userSingUp(UserVO vo) throws SQLException {
-		Connection con= null;
-		PreparedStatement pstmt=null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
 		try {
 			con = getConnection();
 			StringBuilder sb = new StringBuilder();
@@ -59,13 +62,14 @@ public class UserDAO {
 			pstmt.setString(5, vo.getAddress());
 			pstmt.setString(6, vo.getEmail());
 			pstmt.executeQuery();
-		}finally {
+		} finally {
 			closeAll(null, pstmt, con);
 		}
 	}
-	
+
 	/**
 	 * 로그인
+	 * 
 	 * @param user
 	 * @return
 	 * @throws SQLException
@@ -78,48 +82,52 @@ public class UserDAO {
 		try {
 			con = getConnection();
 			StringBuilder sb = new StringBuilder();
-			sb.append("SELECT ID,NAME FROM HOMESHOPPING_USER");
+			sb.append("SELECT ID,PASSWORD,NAME,TEL,ADDRESS,EMAIL FROM HOMESHOPPING_USER");
 			sb.append(" WHERE ID=? AND PASSWORD = ? ");
 			pstmt = con.prepareStatement(sb.toString());
 			pstmt.setString(1, user.getId());
 			pstmt.setString(2, user.getPassword());
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				vo = new UserVO();
-				vo.setId(rs.getString("ID"));
-				vo.setName(rs.getString("NAME"));
+				vo = new UserVO(rs.getString("ID"), rs.getString("PASSWORD"), rs.getString("NAME"), rs.getString("TEL"),
+						rs.getString("ADDRESS"), rs.getString("EMAIL"));
 			}
 		} finally {
 			closeAll(rs, pstmt, con);
 		}
 		return vo;
 	}
+
 	/**
 	 * 유저리스트
+	 * 
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<UserVO>userList() throws SQLException{
-		Connection con =null;
-		PreparedStatement pstmt =null;
-		ResultSet rs= null;
+	public ArrayList<UserVO> userList() throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		ArrayList<UserVO> userList = new ArrayList<UserVO>();
 		try {
-			con =getConnection();
+			con = getConnection();
 			String sql = "SELECT ID,PASSWORD,NAME,TEL,ADDRESS,EMAIL,TOTAL_BUY FROM HOMESHOPPING_USER";
-			pstmt =con.prepareStatement(sql);
-			rs =pstmt.executeQuery();
-			while(rs.next()) {
-				UserVO vo = new UserVO(rs.getString("ID"), rs.getString("PASSWORD"), rs.getString("NAME"), rs.getString("TEL"), rs.getString("ADDRESS"), rs.getString("EMAIL"), rs.getInt("TOTAL_BUY"));
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				UserVO vo = new UserVO(rs.getString("ID"), rs.getString("PASSWORD"), rs.getString("NAME"),
+						rs.getString("TEL"), rs.getString("ADDRESS"), rs.getString("EMAIL"), rs.getInt("TOTAL_BUY"));
 				userList.add(vo);
 			}
-		}finally {
+		} finally {
 			closeAll(rs, pstmt, con);
 		}
 		return userList;
 	}
+
 	/**
 	 * 유저 검색
+	 * 
 	 * @param id
 	 * @return
 	 * @throws SQLException
@@ -127,23 +135,46 @@ public class UserDAO {
 	public UserVO userFindByList(String id) throws SQLException {
 		UserVO vo = null;
 		Connection con = null;
-		PreparedStatement pstmt =null;
-		ResultSet rs =null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
-			con =getConnection();
+			con = getConnection();
 			StringBuilder sb = new StringBuilder();
 			sb.append("SELECT ID,PASSWORD,NAME,TEL,ADDRESS,EMAIL,TOTAL_BUY FROM HOMESHOPPING_USER");
 			sb.append(" WHERE ID=?");
 			pstmt = con.prepareStatement(sb.toString());
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				vo = new UserVO(rs.getString("ID"), rs.getString("PASSWORD"), rs.getString("NAME"), rs.getString("TEL"), rs.getString("ADDRESS"), rs.getString("EMAIL"), rs.getInt("TOTAL_BUY"));
+			if (rs.next()) {
+				vo = new UserVO(rs.getString("ID"), rs.getString("PASSWORD"), rs.getString("NAME"), rs.getString("TEL"),
+						rs.getString("ADDRESS"), rs.getString("EMAIL"), rs.getInt("TOTAL_BUY"));
 			}
-		}finally {
+		} finally {
 			closeAll(rs, pstmt, con);
 		}
 		return vo;
-		
+
+	}
+	
+	public void userImformationUpdate(UserVO vo) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con =getConnection();
+			StringBuilder sb= new StringBuilder();
+			sb.append("UPDATE HOMESHOPPING_USER SET PASSWORD=?,NAME=?,TEL=?,ADDRESS=?,EMAIL=?");
+			sb.append(" WHERE ID=?");
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setString(1,vo.getPassword());
+			pstmt.setString(2,vo.getName());
+			pstmt.setString(3,vo.getTel());
+			pstmt.setString(4,vo.getAddress());
+			pstmt.setString(5,vo.getEmail());
+			pstmt.setString(6,vo.getId());
+			pstmt.executeUpdate();
+		}finally {
+			closeAll(null, pstmt, con);
+					
+		}
 	}
 }

@@ -1,5 +1,7 @@
 package org.shopping.controller;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,7 +25,8 @@ public class UserLoginController implements Controller {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", vo);
 		} else {
-			
+			request.setAttribute("fail", "아이디와 패스워드가 맞지 않습니다");
+			return "loginForm.jsp"; //포워드 방식으로 값 하나  줘서 오류 알림 보내기
 		}
 		return "redirect:index.jsp";
 	}

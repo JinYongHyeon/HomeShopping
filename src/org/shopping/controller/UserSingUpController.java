@@ -18,10 +18,10 @@ public class UserSingUpController implements Controller {
 		String id= request.getParameter("id");
 		String pass= request.getParameter("password");
 		String name= request.getParameter("name");
-		String tel= request.getParameter("tel");
+		String tel= request.getParameter("tel").replaceAll(telPattern,"$1-$2-$3");
 		String address= request.getParameter("address");
 		String email= request.getParameter("email");
-		UserDAO.getInstance().userSingUp(new UserVO(id, pass, name, tel.replaceAll(telPattern,"$1-$2-$3"), address, email));
+		UserDAO.getInstance().userSingUp(new UserVO(id, pass, name, tel, address, email));
 		return "redirect:index.jsp";
 	}
 }

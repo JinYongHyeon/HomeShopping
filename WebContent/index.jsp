@@ -16,6 +16,7 @@
 	%>
 	<%=vo.getName()%>님 안녕하세요
 	<a href="shopping?command=userLogout">로그아웃</a>
+	<a href="userImformation.jsp">개인정보</a>
 	<%
 		if (vo.getId().equals("admin")) {
 	%>
@@ -27,15 +28,9 @@
 		} else {
 	%>
 
-	<form action="shopping" method="post" id="login">
-		<input type="hidden" name="command" value="userLogin"> <input
-			type="text" name="id" required="required" placeholder="아이디를 입력해주세요">
-		<input type="password" name="password" required="required"
-			placeholder="비밀번호를 입력해주세요"> <input type="submit" value="로그인">
-	</form>
+	<a href="loginForm.jsp">로그인</a>
 	<a href="singUP.jsp">회원가입</a>
-	<a href="">아이디 찾기</a>
-	<a href="">비밀번호 찾기</a>
+
 	<%
 		}
 	%>
@@ -44,3 +39,7 @@
 	<script type="text/javascript" src="resources/javascript/script.js"></script>
 </body>
 </html>
+<%-- 
+	이슈 : 로그인 실패 시 로그인 실패 알림 어떻게 하는지??
+	      index.jsp 최조 접근 및 index.jsp 접근 시 DB자료를 어떻게 가져오는가??
+--%>
