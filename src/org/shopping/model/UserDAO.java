@@ -177,4 +177,31 @@ public class UserDAO {
 					
 		}
 	}
+	/**
+	 * 아이디 찾기
+	 * @param name
+	 * @param email
+	 * @return
+	 * @throws SQLException
+	 */
+	public String userFindById(String name,String email) throws SQLException {
+		String id =  null;
+		Connection con =null;
+		PreparedStatement pstmt = null;
+		ResultSet rs= null;
+		try {
+			con =getConnection();
+			String sql="SELECT ID FROM HOMESHOPPING_USER WHERE NAME=? AND EMAIL=?";
+			pstmt =con.prepareStatement(sql);
+			pstmt.setString(1,name);
+			pstmt.setNString(2, email);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				id = rs.getNString("ID");
+			}
+		}finally {
+			closeAll(rs, pstmt, con);
+		}
+		return  id;
+	}
 }

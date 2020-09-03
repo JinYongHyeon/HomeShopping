@@ -25,7 +25,7 @@
 			placeholder="비밀번호를 입력해주세요"> <input type="submit" value="로그인">
 	</form>
 	
-	<a href="">아이디 찾기</a>
+	<a href="idFindByForm.jsp">아이디 찾기</a>
 	<a href="">비밀번호 찾기</a>
 </body>
 </html>
