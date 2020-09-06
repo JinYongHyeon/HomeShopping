@@ -34,9 +34,9 @@
 	<%
 		}
 	%>
-	<script type="text/javascript"
-		src="resources/javascript/jquery-2.2.4.min.js"></script>
-	<script type="text/javascript" src="resources/javascript/script.js"></script>
+		<script type="text/javascript"
+			src="resources/javascript/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript" src="resources/javascript/script.js"></script>
 </body>
 </html>
 <%-- 

@@ -25,5 +25,9 @@
 #adminTable tr th, td {
 	border: 1px solid #000;
 	width: 10%;
-	padding:10px;
+	padding: 10px;
+}
+
+#adminTable tr td img {
+	width: 100px;
 }

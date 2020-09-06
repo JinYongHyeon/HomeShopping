@@ -38,3 +38,19 @@ function passCheck() {
 		alert("비밀번호가 맞지 않습니다");
 	return flag;
 }
+
+/* 어드민 페이지 상품 삭제 체크박스체크 */
+function productCheckbox(){
+	var flag= false;
+	var check = $("input[name=productCk]");
+	
+	for(var i=0;i<check.length;i++){
+		if(check[i].checked === true){
+			flag = true;
+			break;
+		}
+	}
+	if(!flag) alert("체크박스를 체크후 삭제를 해주십시시오.");
+	
+	return flag;
+}

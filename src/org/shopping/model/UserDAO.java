@@ -9,9 +9,7 @@ import java.util.ArrayList;
 
 public class UserDAO {
 	private static UserDAO instance = new UserDAO();
-	private String dbUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-	private String userName = "scott";
-	private String userPass = "tiger";
+
 
 	private UserDAO() {
 	}
@@ -37,7 +35,7 @@ public class UserDAO {
 	 * @throws SQLException
 	 */
 	public Connection getConnection() throws SQLException {
-		return DriverManager.getConnection(dbUrl, userName, userPass);
+		return DriverManager.getConnection(DBInfo.DBURL, DBInfo.USER_NAME, DBInfo.USER_PASS);
 	}
 
 	/**

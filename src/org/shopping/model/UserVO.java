@@ -1,13 +1,13 @@
 package org.shopping.model;
 
 public class UserVO {
-	private String id;
-	private String password;
-	private String name;
-	private String tel;
-	private String address;
-	private String email;
-	private int totalBuy;
+	private String id; //아이디
+	private String password; //비밀번호
+	private String name; //이름
+	private String tel; //전화번호
+	private String address; //주소
+	private String email; //이메일
+	private int totalBuy; //총 구매량
 
 	
 	public UserVO() {
@@ -33,6 +33,8 @@ public class UserVO {
 		this.address = address;
 		this.email = email;
 	}
+	
+	
 
 
 	public UserVO(String id, String password, String name, String tel, String address, String email, int totalBuy) {

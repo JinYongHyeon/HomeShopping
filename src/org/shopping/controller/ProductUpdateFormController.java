@@ -8,17 +8,17 @@ import javax.servlet.http.HttpServletResponse;
 import org.shopping.model.ProductDAO;
 import org.shopping.model.ProductVO;
 
-public class ProductFindByListController implements Controller {
+public class ProductUpdateFormController implements Controller {
 
-	public ProductFindByListController() {
+	public ProductUpdateFormController() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String exectue(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ArrayList<ProductVO> productFindList =ProductDAO.getInstance().productFindByList(request.getParameter("name").trim());
-		request.setAttribute("productList", productFindList);
-		return "admin.jsp";
+		ProductVO productFindList =ProductDAO.getInstance().productUpdateFrom(request.getParameter("no").trim());
+		request.setAttribute("product", productFindList);
+		return "productUpdateForm.jsp";
 	}
 
 }

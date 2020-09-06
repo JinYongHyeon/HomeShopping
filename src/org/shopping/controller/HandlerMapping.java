@@ -36,9 +36,7 @@ public class HandlerMapping {
 			controller = new UserFindByIdController();//아이디찾기
 		} else if (command.equals("userFindByPass")) {
 			controller = new UserFindByPasswordController();//비밀번호 찾기
-		} else if (command.equals("userImformation")) {
-			controller = new UserImformationController();//내정보
-		}else if(command.equals("userProductBuyRecord")) {
+		} else if(command.equals("userProductBuyRecord")) {
 			controller = new UserProductBuyRecordController();//구매내역
 		}else if(command.equals("userLogin")) {
 			controller = new UserLoginController();//로그인
@@ -48,6 +46,8 @@ public class HandlerMapping {
 			controller = new UserListController();//유저리스트
 		}else if(command.equals("userFindByList")) {
 			controller = new UserFindByList();
+		}else if(command.equals("productUpdateForm")) {
+			controller = new ProductUpdateFormController();
 		}
 		return controller;
 	}
