@@ -60,3 +60,7 @@
   
   
 </ul>
+
+<h1>이슈!!</h1>
+<h1> 스마트에디터 사용법 미숙 / MultipartRequest... getParameter(name) 값을 못 가죠옴... command값도 못가져와서 Controller Handle ERROR
+Spring Framework 사용시 MultipartRequest 쉽게 사용가능 현재는 Servlet API 파일(COS) 파일 다운받아서 패키지 import해서 사용 현재 교육받은 스킬로는 부족 ... 결론 Project 잠적 보류...</h1>

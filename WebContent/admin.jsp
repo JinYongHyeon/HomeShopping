@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>관리자</title>
 <link rel="stylesheet" type="text/css" href="resources/style/css.css">
+
 </head>
 <body>
 	<%
@@ -164,7 +165,7 @@
 				</tbody>
 
 			</table>
-			<input type="button" value="상품추가"> <input type="submit"
+			<input type="button" value="상품추가" onclick="location.href='productInsert.jsp'"> <input type="submit"
 				value="상품삭제">
 		</form>
 		<%

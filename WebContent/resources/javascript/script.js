@@ -54,3 +54,14 @@ function productCheckbox(){
 	
 	return flag;
 }
+
+function produtNewCheck(){
+	var flag =true;
+	var a = $("select[name=productNew]").val();
+	if(a==="--신상 유무를 선택해주세요--"){
+		alert("신상 유무를 선택해주세요");
+		flag =false;
+	}
+	return flag;
+}
+

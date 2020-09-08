@@ -151,7 +151,11 @@ public class ProductDAO {
 		}
 		return vo;
 	}
-	
+	/**
+	 * 어드민 페이지(상품 수정)
+	 * @param vo
+	 * @throws SQLException
+	 */
 	public void productUpdate(ProductVO vo) throws SQLException {
 		Connection con =null;
 		PreparedStatement pstmt = null;
@@ -176,6 +180,37 @@ public class ProductDAO {
 			throw e;
 		}finally {
 			closeAll(null, pstmt, con);
+		}
+	}
+	/**
+	 * 어드민 페이지(상품 추가)
+	 * @param vo
+	 * @throws SQLException
+	 */
+	public void productInsert(ProductVO vo)throws SQLException {
+		Connection con =null;
+		PreparedStatement pstmt =null;
+		try {	
+			con =getConnection();
+			con.setAutoCommit(false);
+			StringBuilder sb=  new StringBuilder();
+			sb.append("INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,PRODCUT_IMG_PATH,PRODUCT_COUNT,PRODUCT_KINDS_NAME,PRODUCT_NEW,PRODUCT_DATE)");
+			sb.append(" VALUES(HOMESHOPPING_PRODUCT_SEQ.NEXTVAL,?,?,?,?,?,?,?,SYSDATE)");
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setString(1, vo.getName());
+			pstmt.setInt(2, vo.getPrice());
+			pstmt.setString(3, vo.getContent());
+			pstmt.setString(4, vo.getImgPath());
+			pstmt.setInt(5, vo.getCount());
+			pstmt.setString(6, vo.getKinds());
+			pstmt.setString(7, vo.getProductNew());
+			pstmt.executeUpdate();
+			con.commit();
+		}catch(SQLException e) {
+			con.rollback();
+			throw e;
+		}finally {
+			
 		}
 	}
 	

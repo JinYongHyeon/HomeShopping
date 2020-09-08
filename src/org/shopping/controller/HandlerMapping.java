@@ -9,6 +9,7 @@ public class HandlerMapping {
 	public static HandlerMapping getInstance() {
 		return instance;
 	}
+
 	/**
 	 * 컨트롤러 객체 생성하는 공장(Factory)
 	 * @param command
@@ -36,6 +37,8 @@ public class HandlerMapping {
 			controller = new UserFindByIdController();//아이디찾기
 		} else if (command.equals("userFindByPass")) {
 			controller = new UserFindByPasswordController();//비밀번호 찾기
+		}else if(command.equals("userFindByPassUpdate")) {
+			controller = new UserFindByPasswordUpdateController();//비밀번호 변경
 		} else if(command.equals("userProductBuyRecord")) {
 			controller = new UserProductBuyRecordController();//구매내역
 		}else if(command.equals("userLogin")) {

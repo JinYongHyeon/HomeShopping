@@ -202,4 +202,60 @@ public class UserDAO {
 		}
 		return  id;
 	}
+	
+	/**
+	 * 비밀번호 변경 전 계정 확인
+	 * @param id
+	 * @param name
+	 * @param email
+	 * @return
+	 * @throws SQLException
+	 */
+	public String userFindByPassword(String id,String name,String email) throws SQLException {
+		Connection con =null;
+		PreparedStatement pstmt = null;
+		ResultSet rs= null;
+		String userId =null;
+		try {
+			con =getConnection();
+			String sql="SELECT ID FROM HOMESHOPPING_USER WHERE ID =? AND NAME=? AND EMAIL=?";
+			pstmt =con.prepareStatement(sql);
+			pstmt.setString(1,id);
+			pstmt.setString(2,name);
+			pstmt.setNString(3, email);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				userId= rs.getString("ID");
+			}
+		}finally {
+			closeAll(rs, pstmt, con);
+		}
+		return  userId;
+	}
+	/**
+	 * 비밀번호 수정
+	 * @param id
+	 * @param password
+	 * @throws SQLException
+	 */
+	public void userFindByPasswordUpdate(String id, String password) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con =getConnection();
+			con.setAutoCommit(false);
+			StringBuilder sb = new StringBuilder();
+			sb.append("UPDATE HOMESHOPPING_USER SET PASSWORD =? WHERE ID =?");
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setString(1, password);
+			pstmt.setString(2, id);
+			pstmt.executeUpdate();
+			con.commit();
+		}catch(SQLException e) {
+			con.rollback();
+			throw e;
+		}finally {
+			closeAll(null, pstmt, con);
+		}
+	}
 }

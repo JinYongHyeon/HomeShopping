@@ -17,6 +17,19 @@ public class ProductVO {
 	}
 	
 	
+	public ProductVO(String name, int price, String content, String imgPath, int count, String kinds,
+			String productNew) {
+		super();
+		this.name = name;
+		this.price = price;
+		this.content = content;
+		this.imgPath = imgPath;
+		this.count = count;
+		this.kinds = kinds;
+		this.productNew = productNew;
+	}
+
+
 	public ProductVO(String no, String name, int price, String imgPath, int count, String kinds, String productNew,
 			String date) {
 		super();
