@@ -1,6 +1,7 @@
 package org.shopping.controller;
 
 public class HandlerMapping {
+	
 	private static HandlerMapping instance = new HandlerMapping();
 
 	private HandlerMapping() {
