@@ -7,19 +7,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.sql.DataSource;
+
 public class ProductDAO {
 	private static ProductDAO instance = new ProductDAO();
-
+	private DataSource dataSource;
+	
 	private ProductDAO() {
+		this.dataSource = DataSourceManager.getInstance().getDataSource();
 	}
 
 	public static ProductDAO getInstance() {
 		return instance;
 	}
 
-	public Connection getConnection() throws SQLException {
-		return DriverManager.getConnection(DBInfo.DBURL, DBInfo.USER_NAME, DBInfo.USER_PASS);
-	}
 
 	public void closeAll(ResultSet rs, PreparedStatement pstmt, Connection con) throws SQLException {
 		if (rs != null)
@@ -42,19 +43,23 @@ public class ProductDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			con = getConnection();
+			con = dataSource.getConnection();
 			StringBuilder sb = new StringBuilder();
-			sb.append(
-					"SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODCUT_IMG_PATH,PRODUCT_COUNT,PRODUCT_KINDS_NAME,PRODUCT_NEW,TO_CHAR(PRODUCT_DATE,"
-							+ "'" + "YYYY/MM/DD" + "'" + ") AS 등록일");
+			sb.append("SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_MAIN_IMG,PRODUCT_POSSESION_COUNT,");
+			sb.append("TO_CHAR(PRODUCT_DATE,'YYYY/MM/DD') AS PRODUCT_DATE,PRODUCT_TOTAL_SALE");
 			sb.append(" FROM HOMESHOPPING_PRODUCT");
 			pstmt = con.prepareStatement(sb.toString());
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				ProductVO vo = new ProductVO(rs.getString("PRODUCT_NO"), rs.getString("PRODUCT_NAME"),
-						rs.getInt("PRODUCT_PRICE"), rs.getString("PRODCUT_IMG_PATH"), rs.getInt("PRODUCT_COUNT"),
-						rs.getString("PRODUCT_KINDS_NAME"), rs.getString("PRODUCT_NEW"), rs.getString("등록일"));
-				list.add(vo);
+				ProductVO pvo= new ProductVO();
+				pvo.setProductNo(rs.getString("PRODUCT_NO"));
+				pvo.setProductName(rs.getString("PRODUCT_NAME"));
+				pvo.setProductPrice(rs.getInt("PRODUCT_PRICE"));
+				pvo.setProductMainImg(rs.getString("PRODUCT_MAIN_IMG"));
+				pvo.setProductPossesionCount(rs.getInt("PRODUCT_POSSESION_COUNT"));
+				pvo.setProductDate(rs.getNString("PRODUCT_DATE"));
+				pvo.setProductTotalSale(rs.getInt("PRODUCT_TOTAL_SALE"));
+				list.add(pvo);
 			}
 		} finally {
 			closeAll(rs, pstmt, con);
@@ -70,7 +75,7 @@ public class ProductDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
-			con = getConnection();
+			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			StringBuilder sb = new StringBuilder();
 			sb.append("DELETE FROM HOMESHOPPING_PRODUCT WHERE PRODUCT_NO =?");
@@ -97,21 +102,25 @@ public class ProductDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs =null;
 		try {
-			con =getConnection();
+			con = dataSource.getConnection();
 			StringBuilder sb = new StringBuilder();
-			sb.append(
-					"SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODCUT_IMG_PATH,PRODUCT_COUNT,PRODUCT_KINDS_NAME,PRODUCT_NEW,TO_CHAR(PRODUCT_DATE,"
-							+ "'" + "YYYY/MM/DD" + "'" + ") AS 등록일");
+			sb.append("SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODCUT_MAIN_IMG,PRODUCT_POSSESION_COUNT,TO_CHAR(PRODUCT_DATE,"
+					+ "'" + "YYYY/MM/DD" + "'" + ") AS 등록일,PRODUCT_TOTAL_SALE");
 			sb.append(" FROM HOMESHOPPING_PRODUCT");
 			sb.append(" WHERE PRODUCT_NAME=?");
 			pstmt = con.prepareStatement(sb.toString());
 			pstmt.setString(1, name);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				ProductVO vo = new ProductVO(rs.getString("PRODUCT_NO"), rs.getString("PRODUCT_NAME"),
-						rs.getInt("PRODUCT_PRICE"), rs.getString("PRODCUT_IMG_PATH"), rs.getInt("PRODUCT_COUNT"),
-						rs.getString("PRODUCT_KINDS_NAME"), rs.getString("PRODUCT_NEW"), rs.getString("등록일"));
-				list.add(vo);
+				ProductVO pvo= new ProductVO();
+				pvo.setProductNo(rs.getString("PRODUCT_NO"));
+				pvo.setProductName(rs.getString("PRODUCT_NAME"));
+				pvo.setProductPrice(rs.getInt("PRODUCT_PRICE"));
+				pvo.setProductMainImg(rs.getString("PRODCUT_MAIN_IMG"));
+				pvo.setProductPossesionCount(rs.getInt("PRODUCT_POSSESION_COUNT"));
+				pvo.setProductDate(rs.getNString("등록일"));
+				pvo.setProductTotalSale(rs.getInt("PRODUCT_TOTAL_SALE"));
+				list.add(pvo);
 			}
 		}finally {
 			closeAll(rs, pstmt, con);
@@ -131,20 +140,22 @@ public class ProductDAO {
 		ResultSet rs =null;
 		ProductVO vo =null;
 		try {
-			con =getConnection();
+			con = dataSource.getConnection();
 			StringBuilder sb = new StringBuilder();
-			sb.append(
-					"SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODCUT_IMG_PATH,PRODUCT_COUNT,PRODUCT_KINDS_NAME,PRODUCT_NEW,TO_CHAR(PRODUCT_DATE,"
-							+ "'" + "YYYY/MM/DD" + "'" + ") AS 등록일");
+			sb.append("SELECT PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,PRODCUT_MAIN_IMG,PRODUCT_POSSESION_COUNT");
 			sb.append(" FROM HOMESHOPPING_PRODUCT");
 			sb.append(" WHERE PRODUCT_NO=?");
 			pstmt = con.prepareStatement(sb.toString());
 			pstmt.setString(1, no);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				 vo = new ProductVO(rs.getString("PRODUCT_NO"), rs.getString("PRODUCT_NAME"),
-						rs.getInt("PRODUCT_PRICE"), rs.getString("PRODCUT_IMG_PATH"), rs.getInt("PRODUCT_COUNT"),
-						rs.getString("PRODUCT_KINDS_NAME"), rs.getString("PRODUCT_NEW"), rs.getString("등록일"));
+				vo = new ProductVO();
+				vo.setProductNo(no);
+				vo.setProductName(rs.getString("PRODUCT_NAME"));
+				vo.setProductPrice(rs.getInt("PRODUCT_PRICE"));
+				vo.setProductContent(rs.getString("PRODUCT_CONTENT"));
+				vo.setProductMainImg("PRODCUT_MAIN_IMG");
+				vo.setProductPossesionCount(rs.getInt("PRODUCT_POSSESION_COUNT"));
 			}
 		}finally {
 			closeAll(rs, pstmt, con);
@@ -160,19 +171,17 @@ public class ProductDAO {
 		Connection con =null;
 		PreparedStatement pstmt = null;
 		try {
-			con = getConnection();
+			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			StringBuilder sb = new StringBuilder();
-			sb.append("UPDATE HOMESHOPPING_PRODUCT SET PRODUCT_NAME=?,PRODUCT_PRICE=?,PRODCUT_IMG_PATH=?,PRODUCT_COUNT=?,PRODUCT_KINDS_NAME=?,PRODUCT_NEW=?");
+			sb.append("UPDATE HOMESHOPPING_PRODUCT SET PRODUCT_NAME=?,PRODUCT_PRICE=?,PRODUCT_CONTENT=?,PRODCUT_MAIN_IMG=?,PRODUCT_POSSESION_COUNT=?");
 			sb.append(" WHERE PRODUCT_NO=?");
 			pstmt = con.prepareStatement(sb.toString());
-			pstmt.setString(1, vo.getName());
-			pstmt.setInt(2, vo.getPrice());
-			pstmt.setString(3, vo.getImgPath());
-			pstmt.setInt(4, vo.getCount());
-			pstmt.setString(5, vo.getKinds());
-			pstmt.setString(6, vo.getProductNew());
-			pstmt.setString(7, vo.getNo());
+			pstmt.setString(1, vo.getProductName());
+			pstmt.setInt(2, vo.getProductPrice());
+			pstmt.setString(3, vo.getProductContent());
+			pstmt.setString(4, vo.getProductMainImg());
+			pstmt.setInt(5, vo.getProductPossesionCount());
 			pstmt.executeUpdate();
 			con.commit();
 		}catch(SQLException e) {
@@ -191,19 +200,17 @@ public class ProductDAO {
 		Connection con =null;
 		PreparedStatement pstmt =null;
 		try {	
-			con =getConnection();
+			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			StringBuilder sb=  new StringBuilder();
-			sb.append("INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,PRODCUT_IMG_PATH,PRODUCT_COUNT,PRODUCT_KINDS_NAME,PRODUCT_NEW,PRODUCT_DATE)");
-			sb.append(" VALUES(HOMESHOPPING_PRODUCT_SEQ.NEXTVAL,?,?,?,?,?,?,?,SYSDATE)");
+			sb.append("INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,PRODCUT_MAIN_IMG,PRODUCT_POSSESION_COUNT,RODUCT_DATE)");
+			sb.append(" VALUES(product_no_seq.NEXTVAL,?,?,?,?,?,SYSDATE)");
 			pstmt = con.prepareStatement(sb.toString());
-			pstmt.setString(1, vo.getName());
-			pstmt.setInt(2, vo.getPrice());
-			pstmt.setString(3, vo.getContent());
-			pstmt.setString(4, vo.getImgPath());
-			pstmt.setInt(5, vo.getCount());
-			pstmt.setString(6, vo.getKinds());
-			pstmt.setString(7, vo.getProductNew());
+			pstmt.setString(1, vo.getProductName());
+			pstmt.setInt(2, vo.getProductPrice());
+			pstmt.setString(3, vo.getProductContent());
+			pstmt.setString(4, vo.getProductMainImg());
+			pstmt.setInt(5, vo.getProductPossesionCount());
 			pstmt.executeUpdate();
 			con.commit();
 		}catch(SQLException e) {

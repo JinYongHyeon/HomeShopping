@@ -19,10 +19,8 @@ public class ProductInsertController implements Controller {
 		String content = request.getParameter("content");
 		String imgPath = request.getParameter("imgPath");
 		int count = Integer.parseInt(request.getParameter("count"));
-		String kind = request.getParameter("kind");
-		String productNew = request.getParameter("productNew");
 		System.out.println(name);
-		ProductVO vo = new ProductVO(name,price,content,imgPath,count,kind,productNew);
+		//ProductVO vo = new ProductVO(name,price,content,imgPath,count);
 		//ProductDAO.getInstance().productInsert(vo);
 		return "redirect:admin.jsp";
 		

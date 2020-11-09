@@ -1,149 +1,103 @@
 package org.shopping.model;
 
 public class ProductVO {
-	private String no; // 상품번호
-	private String name; // 상품이름
-	private int price; // 상품가격
-	private String content; // 상품 상세내용
-	private String imgPath; // 메인이미지 주소
-	private int count; // 재고
-	private String kinds; // 상품종류
-	private String productNew; // 신상유무체큰
-	private String date; //등록일
+	private String productNo; // 상품번호
+	private String productName; // 상품이름
+	private int productPrice; // 상품가격
+	private String productContent; // 상품 상세내용
+	private String productMainImg; // 메인이미지 주소
+	private int productPossesionCount; // 재고
+	private String productDate; // 등록일
+	private int productTotalSale;// 상품판매량
 
 	public ProductVO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	
-	
-	public ProductVO(String name, int price, String content, String imgPath, int count, String kinds,
-			String productNew) {
+
+	public ProductVO(String productNo, String productName, int productPrice, String productContent,
+			String productMainImg, int productPossesionCount, String productDate, int productTotalSale) {
 		super();
-		this.name = name;
-		this.price = price;
-		this.content = content;
-		this.imgPath = imgPath;
-		this.count = count;
-		this.kinds = kinds;
-		this.productNew = productNew;
+		this.productNo = productNo;
+		this.productName = productName;
+		this.productPrice = productPrice;
+		this.productContent = productContent;
+		this.productMainImg = productMainImg;
+		this.productPossesionCount = productPossesionCount;
+		this.productDate = productDate;
+		this.productTotalSale = productTotalSale;
 	}
 
-
-	public ProductVO(String no, String name, int price, String imgPath, int count, String kinds, String productNew,
-			String date) {
-		super();
-		this.no = no;
-		this.name = name;
-		this.price = price;
-		this.imgPath = imgPath;
-		this.count = count;
-		this.kinds = kinds;
-		this.productNew = productNew;
-		this.date = date;
-	}
-		
-	
-
-	public ProductVO(String no, String name, int price, String imgPath, int count, String kinds, String productNew) {
-		super();
-		this.no = no;
-		this.name = name;
-		this.price = price;
-		this.imgPath = imgPath;
-		this.count = count;
-		this.kinds = kinds;
-		this.productNew = productNew;
+	public String getProductNo() {
+		return productNo;
 	}
 
-
-	public ProductVO(String no, String name, int price, String content, String imgPath, int count, String kinds,
-			String productNew, String date) {
-		super();
-		this.no = no;
-		this.name = name;
-		this.price = price;
-		this.content = content;
-		this.imgPath = imgPath;
-		this.count = count;
-		this.kinds = kinds;
-		this.productNew = productNew;
-		this.date = date;
+	public void setProductNo(String productNo) {
+		this.productNo = productNo;
 	}
 
-
-	public String getNo() {
-		return no;
+	public String getProductName() {
+		return productName;
 	}
 
-	public void setNo(String no) {
-		this.no = no;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
-	public String getName() {
-		return name;
+	public int getProductPrice() {
+		return productPrice;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setProductPrice(int productPrice) {
+		this.productPrice = productPrice;
 	}
 
-	public int getPrice() {
-		return price;
+	public String getProductContent() {
+		return productContent;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
+	public void setProductContent(String productContent) {
+		this.productContent = productContent;
 	}
 
-	public String getContent() {
-		return content;
+	public String getProductMainImg() {
+		return productMainImg;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setProductMainImg(String productMainImg) {
+		this.productMainImg = productMainImg;
 	}
 
-	public String getImgPath() {
-		return imgPath;
+	public int getProductPossesionCount() {
+		return productPossesionCount;
 	}
 
-	public void setImgPath(String imgPath) {
-		this.imgPath = imgPath;
+	public void setProductPossesionCount(int productPossesionCount) {
+		this.productPossesionCount = productPossesionCount;
 	}
 
-	public int getCount() {
-		return count;
+	public String getProductDate() {
+		return productDate;
 	}
 
-	public void setCount(int count) {
-		this.count = count;
+	public void setProductDate(String productDate) {
+		this.productDate = productDate;
 	}
 
-	public String getKinds() {
-		return kinds;
+	public int getProductTotalSale() {
+		return productTotalSale;
 	}
 
-	public void setKinds(String kinds) {
-		this.kinds = kinds;
+	public void setProductTotalSale(int productTotalSale) {
+		this.productTotalSale = productTotalSale;
 	}
 
-	public String getProductNew() {
-		return productNew;
+	@Override
+	public String toString() {
+		return "ProductVO [productNo=" + productNo + ", productName=" + productName + ", productPrice=" + productPrice
+				+ ", productContent=" + productContent + ", productMainImg=" + productMainImg
+				+ ", productPossesionCount=" + productPossesionCount + ", ProductDate=" + productDate
+				+ ", productTotalSale=" + productTotalSale + "]";
 	}
 
-	public void setProductNew(String productNew) {
-		this.productNew = productNew;
-	}
-
-
-	public String getDate() {
-		return date;
-	}
-
-
-	public void setDate(String date) {
-		this.date = date;
-	}
 	
 }

@@ -1,5 +1,7 @@
 package org.shopping.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,13 +16,14 @@ public class UserFindByList implements Controller {
 
 	@Override
 	public String exectue(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		UserVO vo =UserDAO.getInstance().userFindByList(request.getParameter("id").trim());
-		if(vo != null) {
-			request.setAttribute("user", vo);
+		ArrayList<UserVO> list =UserDAO.getInstance().userFindByList(request.getParameter("id").trim());
+		if(list != null) {
+			request.setAttribute("list", list);
 		}else {
-			request.setAttribute("user", "null");
+			request.setAttribute("list", "null");
 		}
-		return "admin.jsp";
+		request.setAttribute("url", "/views/admin/admin.jsp");
+		return "/views/template/layout.jsp";
 	}
 
 }

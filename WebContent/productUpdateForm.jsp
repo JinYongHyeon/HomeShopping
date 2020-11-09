@@ -21,11 +21,11 @@
 	%>
 		<form action="shopping" method="post">
 		<input type="hidden" name="command" value="productUpdate"> 
-		<input type="text" name="no" value="<%=vo.getNo() %>" readonly="readonly">
-		<input type="text" name="name" value="<%=vo.getName() %>" required="required" placeholder="상품명을 입력해주세요">
-		<input type="number" name="price" value="<%=vo.getPrice() %>" required="required" placeholder="상품가격을 입력해주세요">
-		<input type="text" name="imgPath" value="<%=vo.getImgPath() %>" required="required" placeholder="상품명을 입력해주세요">
-		<input type="number" name="count" value="<%=vo.getCount() %>" required="required" placeholder="재고량 입력해주세요">
+		<input type="text" name="no" value="${requestScope.product.no}" readonly="readonly">
+		<input type="text" name="name" value="${requestScope.product.name}" required="required" placeholder="상품명을 입력해주세요">
+		<input type="number" name="price" value="${requestScope.product.price}" required="required" placeholder="상품가격을 입력해주세요">
+		<input type="text" name="imgPath" value="${requestScope.product.imgPath}" required="required" placeholder="상품명을 입력해주세요">
+		<input type="number" name="count" value="${requestScope.product.possesionCount}" required="required" placeholder="재고량 입력해주세요">
 		<input type="text" name="kind" value="<%=vo.getKinds() %>" required="required" placeholder="상품종류을 입력해주세요">
 		<input type="text" name="productNew" value="<%=vo.getProductNew() %>" required="required" placeholder="신상 유무을 입력해주세요">
 		<input type="submit" value="상품수정">

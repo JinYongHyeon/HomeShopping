@@ -3,6 +3,7 @@ package org.shopping.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.shopping.model.DataSourceManager;
 import org.shopping.model.UserDAO;
 import org.shopping.model.UserVO;
 
@@ -24,4 +25,5 @@ public class UserSingUpController implements Controller {
 		UserDAO.getInstance().userSingUp(new UserVO(id, pass, name, tel, address, email));
 		return "redirect:index.jsp";
 	}
+
 }

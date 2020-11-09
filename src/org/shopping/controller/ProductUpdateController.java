@@ -22,7 +22,7 @@ public class ProductUpdateController implements Controller {
 		String kind = request.getParameter("kind");
 		String productNew = request.getParameter("productNew");
 				
-		ProductDAO.getInstance().productUpdate(new ProductVO(no,name,price,imgPath,count,kind,productNew));
+		//ProductDAO.getInstance().productUpdate(new ProductVO(no,name,price,imgPath,count,kind,productNew));
 		
 		return "redirect:shopping?command=productList";
 	}

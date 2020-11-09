@@ -26,7 +26,7 @@ public class UserImformationUpdateController implements Controller {
 		String email= request.getParameter("email");
 		
 		UserDAO.getInstance().userImformationUpdate(new UserVO(id,pass,name,tel,address,email));
-		UserVO vo = UserDAO.getInstance().userFindByList(id);
+		UserVO vo = UserDAO.getInstance().userLogin(new UserVO(id,pass));
 		session.setAttribute("user", vo);
 		}
 	
