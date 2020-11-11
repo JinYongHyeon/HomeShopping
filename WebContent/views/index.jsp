@@ -4,3 +4,4 @@
 <jsp:forward page="/shopping">
 	<jsp:param value="home" name="command"/>
 </jsp:forward>
+

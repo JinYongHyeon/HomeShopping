@@ -9,13 +9,15 @@ public class ProductVO {
 	private int productPossesionCount; // 재고
 	private String productDate; // 등록일
 	private int productTotalSale;// 상품판매량
+	private String kinds;// 종류
 
 	public ProductVO() {
 		super();
 	}
 
+
 	public ProductVO(String productNo, String productName, int productPrice, String productContent,
-			String productMainImg, int productPossesionCount, String productDate, int productTotalSale) {
+			String productMainImg, int productPossesionCount, String productDate, int productTotalSale, String kinds) {
 		super();
 		this.productNo = productNo;
 		this.productName = productName;
@@ -25,7 +27,9 @@ public class ProductVO {
 		this.productPossesionCount = productPossesionCount;
 		this.productDate = productDate;
 		this.productTotalSale = productTotalSale;
+		this.kinds = kinds;
 	}
+
 
 	public String getProductNo() {
 		return productNo;
@@ -91,6 +95,14 @@ public class ProductVO {
 		this.productTotalSale = productTotalSale;
 	}
 
+	public String getKinds() {
+		return kinds;
+	}
+
+	public void setKinds(String kinds) {
+		this.kinds = kinds;
+	}
+
 	@Override
 	public String toString() {
 		return "ProductVO [productNo=" + productNo + ", productName=" + productName + ", productPrice=" + productPrice
@@ -99,5 +111,4 @@ public class ProductVO {
 				+ ", productTotalSale=" + productTotalSale + "]";
 	}
 
-	
 }

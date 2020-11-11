@@ -93,6 +93,31 @@ public class UserDAO {
 		}
 		return vo;
 	}
+	
+	
+	/**
+	 * 유저리스트 페이징 카운트
+	 * @return
+	 * @throws SQLException
+	 */
+	public int userListCount() throws SQLException {
+		Connection con =null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count =0;
+		try {
+			con = dataSource.getConnection();
+			String sql = "SELECT COUNT(*) FROM HOMESHOPPING_USER";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		}finally {
+			closeAll(rs, pstmt, con);
+		}
+		return count;
+	}
 
 	/**
 	 * 유저리스트
@@ -100,15 +125,20 @@ public class UserDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<UserVO> userList() throws SQLException {
+	public ArrayList<UserVO> userList(PagingBean paging) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<UserVO> userList = new ArrayList<UserVO>();
 		try {
 			con = dataSource.getConnection();
-			String sql = "SELECT ID,PASSWORD,NAME,ADDRESS,TELEPHONE,EMAIL,TOTAL_PURCHASE FROM HOMESHOPPING_USER";
-			pstmt = con.prepareStatement(sql);
+			StringBuilder sb = new StringBuilder();
+			sb.append("SELECT ID,PASSWORD,NAME,ADDRESS,TELEPHONE,EMAIL,TOTAL_PURCHASE FROM(");
+			sb.append("SELECT ROW_NUMBER() OVER(ORDER BY ID ASC) AS rnum,ID,PASSWORD,NAME,ADDRESS,TELEPHONE,EMAIL,TOTAL_PURCHASE FROM HOMESHOPPING_USER)H ");
+			sb.append("WHERE rnum BETWEEN ? AND ?");
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setInt(1, paging.getStartPageRow());
+			pstmt.setInt(2, paging.getEndPageRow());
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				UserVO vo = new UserVO(rs.getString("ID"), rs.getString("PASSWORD"), rs.getString("NAME"),
@@ -120,6 +150,35 @@ public class UserDAO {
 		}
 		return userList;
 	}
+	
+	/**
+	 * 유저검색 카운트
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
+	public int userFindByListCount(String id) throws SQLException {
+		int count = 0; 
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = dataSource.getConnection();
+			StringBuilder sb = new StringBuilder();
+			sb.append("SELECT COUNT(*)FROM HOMESHOPPING_USER");
+			sb.append(" WHERE ID LIKE ?");
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setString(1,'%'+id+'%');
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return count;
+
+	}
 
 	/**
 	 * 유저 검색
@@ -128,7 +187,7 @@ public class UserDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<UserVO> userFindByList(String id) throws SQLException {
+	public ArrayList<UserVO> userFindByList(String id,PagingBean paging) throws SQLException {
 		ArrayList<UserVO> list = new ArrayList<UserVO>();
 		UserVO vo = null;
 		Connection con = null;
@@ -137,10 +196,13 @@ public class UserDAO {
 		try {
 			con = dataSource.getConnection();
 			StringBuilder sb = new StringBuilder();
-			sb.append("SELECT id,PASSWORD,NAME,ADDRESS,TELEPHONE,EMAIL,TOTAL_PURCHASE FROM HOMESHOPPING_USER");
-			sb.append(" WHERE ID LIKE ?");
+			sb.append("SELECT rnum,ID,PASSWORD,NAME,ADDRESS,TELEPHONE,EMAIL,TOTAL_PURCHASE FROM(");
+			sb.append("SELECT ROW_NUMBER() OVER(ORDER BY ID ASC) AS rnum,ID,PASSWORD,NAME,ADDRESS,TELEPHONE,EMAIL,TOTAL_PURCHASE FROM HOMESHOPPING_USER WHERE ID LIKE ?)H");
+			sb.append(" WHERE rnum BETWEEN ? AND ?");
 			pstmt = con.prepareStatement(sb.toString());
 			pstmt.setString(1,'%'+id+'%');
+			pstmt.setInt(2, paging.getStartPageRow());
+			pstmt.setInt(3, paging.getEndPageRow());
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				vo = new UserVO(rs.getString("id") , rs.getString("PASSWORD"), rs.getString("NAME"), rs.getString("TELEPHONE"),

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.shopping.model.PagingBean;
 import org.shopping.model.ProductDAO;
 import org.shopping.model.ProductVO;
 
@@ -16,9 +17,21 @@ public class ProductFindByListController implements Controller {
 
 	@Override
 	public String exectue(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ArrayList<ProductVO> productFindList =ProductDAO.getInstance().productFindByList(request.getParameter("name").trim());
+		String name = request.getParameter("name").trim();
+		int totalRow = ProductDAO.getInstance().productFindByListCount(name);
+		PagingBean paging=null;
+		if(request.getParameter("nowPage") == null) {
+			paging = new PagingBean(totalRow);
+		}else {
+			paging = new PagingBean(Integer.parseInt(request.getParameter("nowPage")), totalRow);
+		}
+		
+		ArrayList<ProductVO> productFindList =ProductDAO.getInstance().productFindByList(name,paging);
 		request.setAttribute("productList", productFindList);
-		return "admin.jsp";
+		request.setAttribute("paging", paging);
+		request.setAttribute("productName", name);
+		request.setAttribute("url", "/views/admin/admin.jsp");
+		return "/views/template/layout.jsp";
 	}
 
 }
