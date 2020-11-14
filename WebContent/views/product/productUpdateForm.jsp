@@ -2,8 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" session="false"%>
 
-	<form action="${pageContext.request.contextPath}/shopping"
-		method="post" enctype="multipart/form-data" id="productForm">
+	<form action="${pageContext.request.contextPath}/shopping" method="post" id="productForm">
 		<input type="hidden" name="command" value="productUpdate"> 
 		<input type="hidden" name="no" value="${requestScope.product.productNo}">
 		<table>
@@ -38,17 +37,45 @@
 				</td>
 			</tr>
 		</table>
-
-
-
-
-
 		<input type="button" value="상품등록" id="productBtn">
 	</form>
+	
+	
+	<form  id="productImgForm" enctype="multipart/form-data" >
+		<input type="hidden" name="productNo" value="${requestScope.product.productNo}">
+		<input type="file" name="productImg" id="productImg" accept="image/*">
+		<input type="button" id="proudctImgBtn" value="변경">
+	</form>
+	
+	
+	
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/editor/js/HuskyEZCreator.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
+			
+			$(document).on("click","#proudctImgBtn",function(){
+				if($("#productImg").val()==""){
+					alert("변경될 상품을 등록해주세요.");
+					return;
+				}
+				var formData = new FormData($("#productImgForm")[0]);
+				
+				$.ajax({
+					type: "post",
+					enctype: "multipart/form-data",
+					url : "${pageContext.request.contextPath}/productImgUpdate",
+					dataType : "text",
+					data : formData,
+					processData : false,
+					contentType : false,
+					success: function(data){
+						$("#productMain img").attr("src","${pageContext.request.contextPath}/resources/img/product/main/"+data);
+					}
+				});
+			});
+			
+			
 			$(document).on("change", "#productImg", function() {
 				var ext = $(this).val().split(".").pop().toLowerCase();
 
@@ -57,7 +84,7 @@
 					$(this).val("");
 					return;
 				}
-				productFile();
+				//productFile();
 			});
 		$(document).on("click","#productBtn",function(){
 			
@@ -84,10 +111,6 @@
 				alert("상세내용을 입력해주세요.");
 				return;
 			}
-			
-		
-			
-			
 			$("#productForm").submit();
 		});
 	});

@@ -241,5 +241,30 @@ public class UserDAO {
 					
 		}
 	}
+	/**
+	 * 아이디 중복 체크
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
+	public int userIdCheck(String id) throws SQLException {
+		int count=0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "SELECT COUNT(*) FROM  HOMESHOPPING_USER WHERE id =?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		}finally{
+			closeAll(rs, pstmt, con);
+		}
+		return count;
+	}
 	
 }

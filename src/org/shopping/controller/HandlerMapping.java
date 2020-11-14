@@ -38,6 +38,10 @@ public class HandlerMapping {
 			controller = new UserSingUpFormController();
 		} else if (command.equals("usersingUp")) {//회원가입
 			controller = new UserSingUpController();
+		}else if(command.equals("userImformationFrom")) {//개인정보 폼
+			controller = new UserImformationFormController();
+		}else if(command.equals("userImformationUpdateForm")) {//개인정보 수정 폼
+			controller = new UserImformationUpdateFormController();
 		} else if (command.equals("userImformationUpdate")) {//개인정보 수정
 			controller = new UserImformationUpdateController();
 		} else if(command.equals("userProductBuyRecord")) {//구매내역
@@ -54,6 +58,8 @@ public class HandlerMapping {
 			controller = new UserFindByList();
 		}else if(command.equals("productDetail")) {// 상세페이지
 			controller = new ProductDetailController();
+		}else if(command.equals("userIdCheck")) {
+			controller = new UserIdCheckController();
 		}
 		return controller;
 	}
