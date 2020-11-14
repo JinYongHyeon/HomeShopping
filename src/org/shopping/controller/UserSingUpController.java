@@ -3,6 +3,7 @@ package org.shopping.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.shopping.model.DataSourceManager;
 import org.shopping.model.UserDAO;
 import org.shopping.model.UserVO;
 
@@ -19,9 +20,22 @@ public class UserSingUpController implements Controller {
 		String pass= request.getParameter("password");
 		String name= request.getParameter("name");
 		String tel= request.getParameter("tel").replaceAll(telPattern,"$1-$2-$3");
-		String address= request.getParameter("address");
+		String arrayAddress[]= request.getParameterValues("address");
+		String address = "";
+		for(String addr  : arrayAddress) {
+			address+= addr;
+		}
 		String email= request.getParameter("email");
-		UserDAO.getInstance().userSingUp(new UserVO(id, pass, name, tel, address, email));
-		return "redirect:index.jsp";
+		UserVO uvo = new UserVO();
+		uvo.setId(id);
+		uvo.setPassword(pass);
+		uvo.setName(name);
+		uvo.setTelephone(tel);
+		uvo.setAddress(address);
+		uvo.setEmail(email);
+		
+		UserDAO.getInstance().userSingUp(uvo);
+		return "redirect:shopping?command=home";
 	}
+
 }

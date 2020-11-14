@@ -15,13 +15,13 @@ public class UserFindByIdController implements Controller {
 	public String exectue(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String name=request.getParameter("name");
 		String email=request.getParameter("email");
-		String id = UserDAO.getInstance().userFindById(name, email);
+		//String id = UserDAO.getInstance().userFindById(name, email);
 		String url ="idFindByForm.jsp";
-		if(id != null) {
-			request.setAttribute("id",id);
-		}else {
-			url = "idFindByForm.jsp?fail=fail";
-		}
+//		if(id != null) {
+//			request.setAttribute("id",id);
+//		}else {
+//			url = "idFindByForm.jsp?fail=fail";
+//		}
 		return url;
 	}
 

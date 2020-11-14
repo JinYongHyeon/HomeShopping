@@ -1,7 +1,5 @@
 package org.shopping.controller;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,9 +14,11 @@ public class ProductUpdateFormController implements Controller {
 
 	@Override
 	public String exectue(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ProductVO productFindList =ProductDAO.getInstance().productUpdateFrom(request.getParameter("no").trim());
+		ProductVO productFindList =ProductDAO.getInstance().productDetail(request.getParameter("no").trim());
 		request.setAttribute("product", productFindList);
-		return "productUpdateForm.jsp";
+		request.setAttribute("url", "/views/product/productUpdateForm.jsp");
+
+		return "/views/template/layout.jsp";
 	}
 
 }

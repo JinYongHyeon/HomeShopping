@@ -18,7 +18,7 @@ public class UserLogoutController implements Controller {
 		}else {
 			throw new Exception();
 		}
-		return "index.jsp";
+		return "redirect:shopping?command=home";
 	}
 
 }
