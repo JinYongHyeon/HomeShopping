@@ -38,7 +38,7 @@ public class ProductListController implements Controller {
 		ArrayList<ProductVO> list = ProductDAO.getInstance().productList(paging);
 		request.setAttribute("productList", list);
 		request.setAttribute("paging", paging);
-		request.setAttribute("url", "/views/admin/admin.jsp");
+		request.setAttribute("url", "/views/admin/adminProductList.jsp");
 		return "/views/template/layout.jsp";
 	}
 

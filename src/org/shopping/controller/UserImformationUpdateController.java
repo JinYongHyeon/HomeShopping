@@ -16,10 +16,10 @@ public class UserImformationUpdateController implements Controller {
 	@Override
 	public String exectue(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession(false);
+		String id= request.getParameter("id");
 		if(session != null && session.getAttribute("user") != null) {
 		UserVO uvo = (UserVO)session.getAttribute("user");
-		String telPattern = "(\\d{3})(\\d{4})(\\d{4})";
-		String id= request.getParameter("id");
+		//String telPattern = "(\\d{3})(\\d{4})(\\d{4})";
 		String pass =null;
 		String address = null;
 		if(request.getParameter("password").trim().equals("")) {
@@ -28,7 +28,7 @@ public class UserImformationUpdateController implements Controller {
 		 pass= request.getParameter("password");
 		}
 		String name= request.getParameter("name");
-		String tel= request.getParameter("tel").replaceAll(telPattern,"$1-$2-$3");
+		String tel= request.getParameter("tel");
 		if(request.getParameter("address").trim().equals("")) {
 		 address = uvo.getAddress();
 		}else {
@@ -50,7 +50,7 @@ public class UserImformationUpdateController implements Controller {
 		session.setAttribute("user", userVO);
 		}
 	
-		return "redirect:index.jsp";
+		return "redirect:shopping?command=userImformationFrom&id="+id;
 	}
 
 }

@@ -15,11 +15,11 @@ public class UserSingUpController implements Controller {
 
 	@Override
 	public String exectue(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String telPattern = "(\\d{3})(\\d{4})(\\d{4})";
+		//String telPattern = "(\\d{3})(\\d{4})(\\d{4})";
 		String id= request.getParameter("id");
 		String pass= request.getParameter("password");
 		String name= request.getParameter("name");
-		String tel= request.getParameter("tel").replaceAll(telPattern,"$1-$2-$3");
+		String tel= request.getParameter("tel");
 		String arrayAddress[]= request.getParameterValues("address");
 		String address = "";
 		for(String addr  : arrayAddress) {

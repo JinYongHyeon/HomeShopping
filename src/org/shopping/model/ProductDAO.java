@@ -311,12 +311,12 @@ public class ProductDAO {
 	}
 
 	/***
-	 * 베스트 10개 상품 조회
+	 * NEW베스트 10개 상품 조회
 	 * 
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<ProductVO> hotproductList() throws SQLException {
+	public ArrayList<ProductVO> newProductList() throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -327,7 +327,41 @@ public class ProductDAO {
 			sb.append("SELECT rnum,PRODUCT_NO,PRODUCT_MAIN_IMG, PRODUCT_NAME,PRODUCT_PRICE ");
 			sb.append("FROM (SELECT ROW_NUMBER() OVER(ORDER BY PRODUCT_DATE DESC) AS rnum,PRODUCT_NO,PRODUCT_MAIN_IMG,");
 			sb.append("PRODUCT_NAME,PRODUCT_PRICE FROM HOMESHOPPING_PRODUCT) ");
-			sb.append("WHERE rnum < 10");
+			sb.append("WHERE rnum < 11");
+			pstmt = con.prepareStatement(sb.toString());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ProductVO pvo = new ProductVO();
+				pvo.setProductNo(rs.getString("PRODUCT_NO"));
+				pvo.setProductMainImg(rs.getString("PRODUCT_MAIN_IMG"));
+				pvo.setProductName(rs.getString("PRODUCT_NAME"));
+				pvo.setProductPrice(rs.getInt("PRODUCT_PRICE"));
+				list.add(pvo);
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return list;
+	}
+	
+	/***
+	 * NEW베스트 10개 상품 조회
+	 * 
+	 * @return
+	 * @throws SQLException
+	 */
+	public ArrayList<ProductVO> hotProductList() throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
+		try {
+			con = dataSource.getConnection();
+			StringBuilder sb = new StringBuilder();
+			sb.append("SELECT rnum,PRODUCT_NO,PRODUCT_MAIN_IMG, PRODUCT_NAME,PRODUCT_PRICE ");
+			sb.append("FROM (SELECT ROW_NUMBER() OVER(ORDER BY PRODUCT_TOTAL_SALE DESC) AS rnum,PRODUCT_NO,PRODUCT_MAIN_IMG,");
+			sb.append("PRODUCT_NAME,PRODUCT_PRICE FROM HOMESHOPPING_PRODUCT) ");
+			sb.append("WHERE rnum < 11");
 			pstmt = con.prepareStatement(sb.toString());
 			rs = pstmt.executeQuery();
 			while(rs.next()) {

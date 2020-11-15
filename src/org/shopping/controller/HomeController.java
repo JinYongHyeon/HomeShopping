@@ -12,8 +12,10 @@ public class HomeController implements Controller {
 
 	@Override
 	public String exectue(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ArrayList<ProductVO> hotList = ProductDAO.getInstance().hotproductList();
+		ArrayList<ProductVO> hotList = ProductDAO.getInstance().hotProductList();
+		ArrayList<ProductVO> newList = ProductDAO.getInstance().newProductList();
 		request.setAttribute("hotList", hotList);
+		request.setAttribute("newList", newList);
 		request.setAttribute("url", "/views/home.jsp");
 		return "/views/template/layout.jsp";
 	}

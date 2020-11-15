@@ -1,60 +1,103 @@
 <%@page import="org.shopping.model.ProductVO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" session="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="false"%>
 
-	<form action="${pageContext.request.contextPath}/shopping" method="post" id="productForm">
-		<input type="hidden" name="command" value="productUpdate"> 
-		<input type="hidden" name="no" value="${requestScope.product.productNo}">
-		<table>
-			<tr>
-				<td>상품명</td>
-				<td><input type="text" name="name" value="${requestScope.product.productName}"
-					placeholder="상품명을 입력해주세요"></td>
-			</tr>
-			<tr>
-				<td>상품가격</td>
-				<td><input type="number" name="price" value="${requestScope.product.productPrice}"
-					placeholder="상품가격을 입력해주세요"></td>
-			</tr>
-			<tr>
-				<td>상품재고</td>
-				<td><input type="number" name="count" value="${requestScope.product.productPossesionCount}"
-					placeholder="재고량 입력해주세요" min=1;></td>
-			</tr>
-			<tr>
-				<td>상품종류</td>
-				<td><input type="text" name="kind" value="${requestScope.product.kinds}"
-					placeholder="상품종류을 입력해주세요"></td>
-			</tr>
-			<tr>
-				<td>상품내용</td>
-				<td><textarea name="content" id="content" style="width: 100%;">${requestScope.product.productContent}</textarea></td>
-			</tr>
-			<tr>
-				<td>대표이미지</td>
-				<td>
-					<div id="productMain"><img src="${pageContext.request.contextPath}/resources/img/product/main/${requestScope.product.productMainImg}"></div>
-				</td>
-			</tr>
-		</table>
-		<input type="button" value="상품등록" id="productBtn">
-	</form>
+<div class="container">
+	<div id="productInfo">
+		<form action="${pageContext.request.contextPath}/shopping" method="post">
+			<input type="hidden" name="command" value="productUpdate"> <input type="hidden" name="no" value="${requestScope.product.productNo}">
+			<table>
+				<tr>
+					<th>상품명</th>
+					<td><input type="text" name="name" value="${requestScope.product.productName}" placeholder="상품명을 입력해주세요"></td>
+				</tr>
+				<tr>
+					<th>상품가격</th>
+					<td><input type="number" name="price" value="${requestScope.product.productPrice}" placeholder="상품가격을 입력해주세요"></td>
+				</tr>
+				<tr>
+					<th>상품재고</th>
+					<td><input type="number" name="count" value="${requestScope.product.productPossesionCount}" placeholder="재고량 입력해주세요" min=1;></td>
+				</tr>
+				<tr>
+					<th>상품종류</th>
+					<td><input type="text" name="kind" value="${requestScope.product.kinds}" placeholder="상품종류을 입력해주세요"></td>
+				</tr>
+				<tr>
+					<th>상품내용</th>
+					<td><textarea name="content" id="content" style="width: 100%;">${requestScope.product.productContent}</textarea></td>
+				</tr>
+				<tr>
+					<th>대표이미지</th>
+					<td>
+						<div class="productMainImg">
+							<div id="productMain">
+								<span>대표 이미지 수정</span>
+								<img src="${pageContext.request.contextPath}/resources/img/product/main/${requestScope.product.productMainImg}">
+							</div>
+						</div>	
+					</td>
+				</tr>
+			</table>
+			<input type="button" value="상품등록" id="productBtn">
+		</form>
+
+		<div class="productChage">
+			<div class="productChageHeader">
+			<h1>변경할 상품 이미지를 등록해주세요</h1>
+			</div>
+		<div class="productChageBody">
+			<form id="productImgForm" enctype="multipart/form-data">
+				<input type="hidden" name="productNo" value="${requestScope.product.productNo}"> <input type="file" name="productImg" id="productImg" accept="image/*"> 
+			</form>
+				<div id="productMain" class="productChageMain">
+					<img src="${pageContext.request.contextPath}/resources/img/product/main/${requestScope.product.productMainImg}">
+				</div>
+			</div>
+			<%-- productChageBody --%>
+			<div class="productChageBtn">
+				<input type="button" id="proudctImgBtn" value="변경">
+				<input type="button" value="취소">
+			</div>
+			<%-- productChageBtn --%>
+		</div>
+		<%-- productChage --%>
 	
-	
-	<form  id="productImgForm" enctype="multipart/form-data" >
-		<input type="hidden" name="productNo" value="${requestScope.product.productNo}">
-		<input type="file" name="productImg" id="productImg" accept="image/*">
-		<input type="button" id="proudctImgBtn" value="변경">
-	</form>
-	
-	
-	
-	<script type="text/javascript"
+	</div>
+	<%-- productInfo --%>
+</div>
+<%-- container --%>
+
+
+
+<script type="text/javascript"
 		src="${pageContext.request.contextPath}/editor/js/HuskyEZCreator.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			
+
+			$(document).on("click",".productMainImg #productMain",function(){
+				if($(".productChage").is(":animated"))return;
+				$(".productChage #productMain img").attr("src",$(".productMainImg #productMain img").attr("src"));
+				$(".productChage .productChageBody #productImgForm input[type=file]").val("");
+				$(".productChage").css("display","block");
+				$(".productChage").animate({
+					top: "40%",
+					opacity: 1
+				},1000);
+			});
+			
+			$(document).on("click",".productChage .productChageBtn input[value=취소]",function(){
+				if($(".productChage").is(":animated"))return;
+				$(".productChage").animate({
+					top: "30%",
+					opacity: 0
+				},1000,function(){
+					$(this).css("display","none");
+				});
+			});
+			
 			$(document).on("click","#proudctImgBtn",function(){
+				if($(".productChage").is(":animated"))return;
 				if($("#productImg").val()==""){
 					alert("변경될 상품을 등록해주세요.");
 					return;
@@ -71,6 +114,12 @@
 					contentType : false,
 					success: function(data){
 						$("#productMain img").attr("src","${pageContext.request.contextPath}/resources/img/product/main/"+data);
+						$(".productChage").animate({
+							top: "30%",
+							opacity: 0
+						},1000,function(){
+							$(this).css("display","none");
+						});
 					}
 				});
 			});
@@ -84,7 +133,7 @@
 					$(this).val("");
 					return;
 				}
-				//productFile();
+				productFile();
 			});
 		$(document).on("click","#productBtn",function(){
 			
@@ -115,12 +164,13 @@
 		});
 	});
 		function productFile() {
-			document.getElementById("productMain").innerHTML = "";
+			document.getElementsByClassName("productChageMain")[0].innerHTML="";
+			//document.getElementById("productMain").innerHTML = "";
 			var reader = new FileReader();//파일 읽어오기
 			reader.onload = function(event) {
 				var img = document.createElement("img");
 				img.setAttribute("src", event.target.result);//img속성 중 src에 주소값 넣는다.
-				document.querySelector("#productMain").appendChild(img);
+				document.querySelector(".productChage .productChageBody #productMain").appendChild(img);
 			};
 			reader.readAsDataURL(event.target.files[0]);
 		}
