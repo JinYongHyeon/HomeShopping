@@ -66,7 +66,7 @@ public class ProductDAO {
 			sb.append(
 					"SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_MAIN_IMG,PRODUCT_POSSESION_COUNT,PRODUCT_DATE,PRODUCT_TOTAL_SALE,PRODUCT_KINDS ");
 			sb.append(
-					"FROM (SELECT ROW_NUMBER() OVER(ORDER BY PRODUCT_NO ASC) AS RNUM,PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_MAIN_IMG,PRODUCT_POSSESION_COUNT,");
+					"FROM (SELECT ROW_NUMBER() OVER(ORDER BY PRODUCT_NO DESC) AS RNUM,PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_MAIN_IMG,PRODUCT_POSSESION_COUNT,");
 			sb.append(
 					"TO_CHAR(PRODUCT_DATE,'YYYY/MM/DD') AS PRODUCT_DATE,PRODUCT_TOTAL_SALE,PRODUCT_KINDS FROM HOMESHOPPING_PRODUCT)H ");
 			sb.append("WHERE RNUM BETWEEN ? AND ?");
@@ -325,12 +325,13 @@ public class ProductDAO {
 			con = dataSource.getConnection();
 			StringBuilder sb = new StringBuilder();
 			sb.append("SELECT rnum,PRODUCT_NO,PRODUCT_MAIN_IMG, PRODUCT_NAME,PRODUCT_PRICE ");
-			sb.append("FROM (SELECT ROW_NUMBER() OVER(ORDER BY PRODUCT_DATE DESC) AS rnum,PRODUCT_NO,PRODUCT_MAIN_IMG,");
+			sb.append(
+					"FROM (SELECT ROW_NUMBER() OVER(ORDER BY PRODUCT_DATE DESC) AS rnum,PRODUCT_NO,PRODUCT_MAIN_IMG,");
 			sb.append("PRODUCT_NAME,PRODUCT_PRICE FROM HOMESHOPPING_PRODUCT) ");
 			sb.append("WHERE rnum < 11");
 			pstmt = con.prepareStatement(sb.toString());
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				ProductVO pvo = new ProductVO();
 				pvo.setProductNo(rs.getString("PRODUCT_NO"));
 				pvo.setProductMainImg(rs.getString("PRODUCT_MAIN_IMG"));
@@ -343,7 +344,7 @@ public class ProductDAO {
 		}
 		return list;
 	}
-	
+
 	/***
 	 * NEW베스트 10개 상품 조회
 	 * 
@@ -359,18 +360,226 @@ public class ProductDAO {
 			con = dataSource.getConnection();
 			StringBuilder sb = new StringBuilder();
 			sb.append("SELECT rnum,PRODUCT_NO,PRODUCT_MAIN_IMG, PRODUCT_NAME,PRODUCT_PRICE ");
-			sb.append("FROM (SELECT ROW_NUMBER() OVER(ORDER BY PRODUCT_TOTAL_SALE DESC) AS rnum,PRODUCT_NO,PRODUCT_MAIN_IMG,");
+			sb.append(
+					"FROM (SELECT ROW_NUMBER() OVER(ORDER BY PRODUCT_TOTAL_SALE DESC) AS rnum,PRODUCT_NO,PRODUCT_MAIN_IMG,");
 			sb.append("PRODUCT_NAME,PRODUCT_PRICE FROM HOMESHOPPING_PRODUCT) ");
 			sb.append("WHERE rnum < 11");
 			pstmt = con.prepareStatement(sb.toString());
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				ProductVO pvo = new ProductVO();
 				pvo.setProductNo(rs.getString("PRODUCT_NO"));
 				pvo.setProductMainImg(rs.getString("PRODUCT_MAIN_IMG"));
 				pvo.setProductName(rs.getString("PRODUCT_NAME"));
 				pvo.setProductPrice(rs.getInt("PRODUCT_PRICE"));
 				list.add(pvo);
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return list;
+	}
+
+	/**
+	 * 상품 종류별 카운트(페이징)
+	 * 
+	 * @param kind
+	 * @return
+	 * @throws SQLException
+	 */
+	public int productKindListCount(String kind) throws SQLException {
+		int count = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "SELECT COUNT(*) FROM HOMESHOPPING_PRODUCT WHERE product_kinds=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, kind);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return count;
+	}
+
+	/**
+	 * 상품 종류별 리스트
+	 * 
+	 * @param kind
+	 * @return
+	 * @throws SQLException
+	 */
+	public ArrayList<ProductVO> productKindList(String kind, PagingBean paging) throws SQLException {
+		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = dataSource.getConnection();
+			StringBuilder sb = new StringBuilder();
+			sb.append("SELECT PRODUCT_NO,PRODUCT_MAIN_IMG, PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_KINDS ");
+			sb.append(
+					"FROM (SELECT ROW_NUMBER() OVER(ORDER BY PRODUCT_TOTAL_SALE DESC) AS rnum,PRODUCT_NO,PRODUCT_MAIN_IMG,");
+			sb.append("PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_KINDS FROM HOMESHOPPING_PRODUCT WHERE PRODUCT_KINDS = ?) ");
+			sb.append("WHERE rnum BETWEEN ? AND ?");
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setString(1, kind);
+			pstmt.setInt(2, paging.getStartPageRow());
+			pstmt.setInt(3, paging.getEndPageRow());
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				ProductVO pvo = new ProductVO();
+				pvo.setProductNo(rs.getString("PRODUCT_NO"));
+				pvo.setProductMainImg(rs.getString("PRODUCT_MAIN_IMG"));
+				pvo.setProductName(rs.getString("PRODUCT_NAME"));
+				pvo.setProductPrice(rs.getInt("PRODUCT_PRICE"));
+				pvo.setKinds("PRODUCT_KINDS");
+				list.add(pvo);
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return list;
+	}
+
+	/**
+	 * 장바구니 중복검사
+	 * 
+	 * @param cart
+	 * @return
+	 * @throws SQLException
+	 */
+	public int productCartCheck(ShoppingBasket cart) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		try {
+			con = dataSource.getConnection();
+			String sql = "SELECT COUNT(*) FROM SHOPPING_BASKET WHERE product_no=? AND id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, cart.getProductVO().getProductNo());
+			pstmt.setString(2, cart.getUserVO().getId());
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return count;
+	}
+
+	/**
+	 * 장바구니 추가
+	 * 
+	 * @param cart
+	 * @throws SQLException
+	 */
+	public void productAddCart(ShoppingBasket cart) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "INSERT INTO SHOPPING_BASKET(product_no,id,shopping_basket_price) VALUES(?,?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, cart.getProductVO().getProductNo());
+			pstmt.setString(2, cart.getUserVO().getId());
+			pstmt.setInt(3, cart.getProductVO().getProductPrice());
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(null, pstmt, con);
+		}
+	}
+
+	/**
+	 * 장바구니 삭제
+	 * 
+	 * @param cart
+	 * @throws SQLException
+	 */
+	public void productDeleteCart(String no,String id) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "DELETE FROM SHOPPING_BASKET WHERE product_no=? AND id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, no);
+			pstmt.setString(2, id);
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(null, pstmt, con);
+		}
+	}
+
+	/**
+	 * 장바구니 총 갯수(페이징)
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
+	public int productCartListCount(String id) throws SQLException {
+		int totalCount = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "SELECT COUNT(*) FROM SHOPPING_BASKET WHERE id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				totalCount = rs.getInt(1);
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return totalCount;
+	}
+	
+	/**
+	 * 장바구니 리스트
+	 * @param id
+	 * @param paging
+	 * @return
+	 * @throws SQLException
+	 */
+	public ArrayList<ShoppingBasket> productCartList(String id,PagingBean paging) throws SQLException {
+		ArrayList<ShoppingBasket> list = new ArrayList<ShoppingBasket>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = dataSource.getConnection();
+			StringBuilder sb = new StringBuilder();
+			sb.append("SELECT s.product_no,s.id,s.shopping_basket_count,s.shopping_basket_price,p.product_name,p.PRODUCT_MAIN_IMG ");
+			sb.append("FROM (SELECT ROW_NUMBER() OVER(ORDER BY id ASC) AS RNUM,product_no,id,shopping_basket_count,shopping_basket_price FROM SHOPPING_BASKET WHERE id=?)s,HOMESHOPPING_PRODUCT p "); 
+			sb.append("WHERE s.product_no=p.product_no and rnum BETWEEN ? AND ?");
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setString(1, id);
+			pstmt.setInt(2, paging.getStartPageRow());
+			pstmt.setInt(3, paging.getEndPageRow());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ShoppingBasket basket = new ShoppingBasket();
+				ProductVO pvo = new ProductVO();
+				UserVO uvo = new UserVO();
+				pvo.setProductNo(rs.getString("product_no"));
+				uvo.setId(rs.getString("id"));
+				basket.setShoppingBasketCount(rs.getInt("shopping_basket_count"));
+				pvo.setProductPrice(rs.getInt("shopping_basket_price"));
+				pvo.setProductName("product_name");
+				pvo.setProductMainImg("PRODUCT_MAIN_IMG");
+				basket.setProductVO(pvo);
+				basket.setUserVO(uvo);
+				list.add(basket);
 			}
 		} finally {
 			closeAll(rs, pstmt, con);

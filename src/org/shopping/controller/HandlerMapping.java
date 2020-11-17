@@ -30,7 +30,7 @@ public class HandlerMapping {
 			controller = new ProductUpdateController(); 
 		}else if(command.equals("productInsertForm")) {//상품추가 폼
 			controller = new ProductInsertFormController();			
-		} else if (command.equals("productFindByList")) {//상품검색
+		} else if (command.equals("productFindByList")) {//상품검색(어드민)
 			controller = new ProductFindByListController();
 		} else if (command.equals("productList")) {//상품전체검색
 			controller = new ProductListController();
@@ -60,6 +60,16 @@ public class HandlerMapping {
 			controller = new ProductDetailController();
 		}else if(command.equals("userIdCheck")) {
 			controller = new UserIdCheckController();
+		}else if(command.equals("productKindList")) { //상품종류별 리스트
+			controller = new ProductKindListController();
+		}else if(command.equals("userProductFindByList")) {//사용자 상품 검색
+			controller = new UserProductFindByListController();
+		}else if(command.equals("productAddCart")) {//장바구니 추가
+			controller = new ProductAddCartController();
+		}else if(command.equals("productCartList")) {//장바구니 리스트
+			controller = new ProductCartListController();
+		}else if(command.equals("productDeleteCart")) {//장바구니 삭제
+			controller = new ProductDeleteCartController();
 		}
 		return controller;
 	}

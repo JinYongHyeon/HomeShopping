@@ -3,7 +3,7 @@
 
 <div class="container">
 	<div id="productInfo">
-		<form action="${pageContext.request.contextPath}/shopping" method="post">
+		<form action="${pageContext.request.contextPath}/shopping" id="productInfoForm" method="post">
 			<input type="hidden" name="command" value="productUpdate"> <input type="hidden" name="no" value="${requestScope.product.productNo}">
 			<table>
 				<tr>
@@ -38,7 +38,7 @@
 					</td>
 				</tr>
 			</table>
-			<input type="button" value="상품등록" id="productBtn">
+			<input type="button" value="상품변경" id="productBtn">
 		</form>
 
 		<div class="productChage">
@@ -160,7 +160,7 @@
 				alert("상세내용을 입력해주세요.");
 				return;
 			}
-			$("#productForm").submit();
+			$("#productInfoForm").submit();
 		});
 	});
 		function productFile() {
