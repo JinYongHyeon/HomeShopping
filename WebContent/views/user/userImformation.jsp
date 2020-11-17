@@ -33,6 +33,10 @@
 						<th>이메일</th>
 						<td>${sessionScope.user.email}</td>
 					</tr>
+					<tr>
+						<th>마일리지</th>
+						<td>${sessionScope.user.point}</td>
+					</tr>
 				</table>
 			</div>
 			<!-- userImformationTable  -->

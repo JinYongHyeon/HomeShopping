@@ -70,6 +70,11 @@ public class HandlerMapping {
 			controller = new ProductCartListController();
 		}else if(command.equals("productDeleteCart")) {//장바구니 삭제
 			controller = new ProductDeleteCartController();
+		}else if(command.equals("orderForm")) { //구매 페이지
+			controller = new OrderFormController();
+		}else if(command.equals("order")) {//구매
+			controller = new OrderController();
+			
 		}
 		return controller;
 	}

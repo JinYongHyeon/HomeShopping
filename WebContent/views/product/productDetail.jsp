@@ -18,8 +18,10 @@
 			</div>
 			<c:if test="${sessionScope.user != null }">
 			<div class="productBtn">
-				<form action="" method="post" onsubmit="return purchaseCheck()">
-					<input type="number" min="1" id="productCount" required="required" placeholder="수량"> <input type="button" id="productCart" value="장바구니"> <input type="submit" value="구매하기">
+				<form action="${pageContext.request.contextPath}/shopping" method="post" onsubmit="return purchaseCheck()">
+					<input type="hidden" name="command" value="orderForm">
+					<input type="hidden" name="productNo" value="${requestScope.product.productNo}">
+					<input type="number" name="productCount" min="1" id="productCount" required="required" placeholder="수량"> <input type="button" id="productCart" value="장바구니"> <input type="submit" value="구매하기">
 				</form>
 			</div>
 			</c:if>
@@ -49,7 +51,7 @@
 						success:function(data){
 							if(data<=0){
 								if(confirm("장바구니 리스트로 이동하시겠습니까?"))
-									location.href="";
+									location.href="${pageContext.request.contextPath}/shopping?command=productCartList&id=${sessionScope.user.id}";
 							}else{
 								alert("이미 존재하는 상품입니다.");
 								return;

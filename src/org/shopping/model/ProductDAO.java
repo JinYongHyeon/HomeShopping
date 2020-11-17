@@ -586,5 +586,32 @@ public class ProductDAO {
 		}
 		return list;
 	}
-
+	
+	public ProductVO productFindByNo(String no) throws SQLException {
+		ProductVO pvo = null;
+		Connection con =null;
+		PreparedStatement pstmt =null;
+		ResultSet rs= null;
+		try {
+			con =dataSource.getConnection();
+			StringBuilder sb = new StringBuilder();
+			sb.append("SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE FROM HOMESHOPPING_PRODUCT WHERE PRODUCT_NO =?");
+			pstmt =con.prepareStatement(sb.toString());
+			pstmt.setString(1, no);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				pvo = new ProductVO();
+				pvo.setProductNo(rs.getString("PRODUCT_NO"));
+				pvo.setProductName(rs.getString("PRODUCT_NAME"));
+				pvo.setProductPrice(rs.getInt("PRODUCT_PRICE"));
+			}
+		}finally {
+			closeAll(rs, pstmt, con);
+		}
+		return pvo;
+	}
+	
+	public void orderDetailAdd() {
+		
+	}
 }

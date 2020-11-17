@@ -7,7 +7,7 @@ public class UserVO {
 	private String address; //주소
 	private String telephone; //전화번호
 	private String email; //이메일
-	private int totalPurchase; //총 구매량
+	private int point; //포인트
 
 	
 	public UserVO() {
@@ -37,7 +37,7 @@ public class UserVO {
 
 
 	public UserVO(String id, String password, String name, String address, String telephone, String email,
-			int totalPurchase) {
+			int point) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -45,7 +45,7 @@ public class UserVO {
 		this.address = address;
 		this.telephone = telephone;
 		this.email = email;
-		this.totalPurchase = totalPurchase;
+		this.point = point;
 	}
 
 
@@ -109,14 +109,19 @@ public class UserVO {
 	}
 
 
-	public int getTotalPurchase() {
-		return totalPurchase;
+
+	public int getPoint() {
+		return point;
 	}
 
 
-	public void setTotalPurchase(int totalPurchase) {
-		this.totalPurchase = totalPurchase;
+
+	public void setPoint(int point) {
+		this.point = point;
 	}
+
+
+	
 	
 
 	

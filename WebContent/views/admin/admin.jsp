@@ -41,7 +41,7 @@
 							<td>${user.telephone}</td>
 							<td>${user.address}</td>
 							<td>${user.email}</td>
-							<td>${user.totalPurchase}</td>
+							<td>${user.point}</td>
 						</tr>
 					</c:forEach>
 				</c:when>

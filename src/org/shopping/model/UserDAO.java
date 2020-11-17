@@ -72,7 +72,7 @@ public class UserDAO {
 		try {
 			con = dataSource.getConnection();
 			StringBuilder sb = new StringBuilder();
-			sb.append("SELECT ID,PASSWORD,NAME,ADDRESS,TELEPHONE,EMAIL,TOTAL_PURCHASE FROM HOMESHOPPING_USER");
+			sb.append("SELECT ID,PASSWORD,NAME,ADDRESS,TELEPHONE,EMAIL,POINT FROM HOMESHOPPING_USER");
 			sb.append(" WHERE ID=? AND PASSWORD = ? ");
 			pstmt = con.prepareStatement(sb.toString());
 			pstmt.setString(1, user.getId());
@@ -86,7 +86,7 @@ public class UserDAO {
 				vo.setAddress(rs.getString("ADDRESS"));
 				vo.setTelephone(rs.getString("TELEPHONE"));
 				vo.setEmail( rs.getString("EMAIL"));
-				vo.setTotalPurchase(rs.getInt("TOTAL_PURCHASE"));
+				vo.setPoint(rs.getInt("POINT"));
 			}
 		} finally {
 			closeAll(rs, pstmt, con);
@@ -133,8 +133,8 @@ public class UserDAO {
 		try {
 			con = dataSource.getConnection();
 			StringBuilder sb = new StringBuilder();
-			sb.append("SELECT ID,PASSWORD,NAME,ADDRESS,TELEPHONE,EMAIL,TOTAL_PURCHASE FROM(");
-			sb.append("SELECT ROW_NUMBER() OVER(ORDER BY ID ASC) AS rnum,ID,PASSWORD,NAME,ADDRESS,TELEPHONE,EMAIL,TOTAL_PURCHASE FROM HOMESHOPPING_USER)H ");
+			sb.append("SELECT ID,PASSWORD,NAME,ADDRESS,TELEPHONE,EMAIL,POINT FROM(");
+			sb.append("SELECT ROW_NUMBER() OVER(ORDER BY ID ASC) AS rnum,ID,PASSWORD,NAME,ADDRESS,TELEPHONE,EMAIL,POINT FROM HOMESHOPPING_USER)H ");
 			sb.append("WHERE rnum BETWEEN ? AND ?");
 			pstmt = con.prepareStatement(sb.toString());
 			pstmt.setInt(1, paging.getStartPageRow());
@@ -142,7 +142,7 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				UserVO vo = new UserVO(rs.getString("ID"), rs.getString("PASSWORD"), rs.getString("NAME"),
-						rs.getString("TELEPHONE"), rs.getString("ADDRESS"), rs.getString("EMAIL"), rs.getInt("TOTAL_PURCHASE"));
+						rs.getString("TELEPHONE"), rs.getString("ADDRESS"), rs.getString("EMAIL"), rs.getInt("POINT"));
 				userList.add(vo);
 			}
 		} finally {
@@ -197,7 +197,7 @@ public class UserDAO {
 			con = dataSource.getConnection();
 			StringBuilder sb = new StringBuilder();
 			sb.append("SELECT rnum,ID,PASSWORD,NAME,ADDRESS,TELEPHONE,EMAIL,TOTAL_PURCHASE FROM(");
-			sb.append("SELECT ROW_NUMBER() OVER(ORDER BY ID ASC) AS rnum,ID,PASSWORD,NAME,ADDRESS,TELEPHONE,EMAIL,TOTAL_PURCHASE FROM HOMESHOPPING_USER WHERE ID LIKE ?)H");
+			sb.append("SELECT ROW_NUMBER() OVER(ORDER BY ID ASC) AS rnum,ID,PASSWORD,NAME,ADDRESS,TELEPHONE,EMAIL,POINT FROM HOMESHOPPING_USER WHERE ID LIKE ?)H");
 			sb.append(" WHERE rnum BETWEEN ? AND ?");
 			pstmt = con.prepareStatement(sb.toString());
 			pstmt.setString(1,'%'+id+'%');
@@ -206,7 +206,7 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				vo = new UserVO(rs.getString("id") , rs.getString("PASSWORD"), rs.getString("NAME"), rs.getString("TELEPHONE"),
-						rs.getString("ADDRESS"), rs.getString("EMAIL"), rs.getInt("TOTAL_PURCHASE"));
+						rs.getString("ADDRESS"), rs.getString("EMAIL"), rs.getInt("POINT"));
 				list.add(vo);
 			}
 		} finally {
@@ -266,5 +266,16 @@ public class UserDAO {
 		}
 		return count;
 	}
-	
+	public void userPointMinus(String id,int productPrice) throws SQLException {
+		Connection con =null;
+		PreparedStatement pstmt =null;
+		try {
+			con = dataSource.getConnection();
+			String sql ="UPDATE HOMESHOPPING_USER SET point=point-? WHERE id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.executeUpdate();
+		}finally {
+			closeAll(null, pstmt, con);
+		}
+	}
 }

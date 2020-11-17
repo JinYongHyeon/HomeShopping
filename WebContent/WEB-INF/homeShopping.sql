@@ -127,6 +127,9 @@ INSERT INTO SHOPPING_BASKET(product_no,id,shopping_basket_price) VALUES(114,'use
 
 SELECT * FROM SHOPPING_BASKET
 
+--상품 정보 조회
+SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE FROM HOMESHOPPING_PRODUCT WHERE PRODUCT_NO =1
+
 --장바구니 리스트 페이징
 SELECT s.product_no,s.id,s.shopping_basket_count,s.shopping_basket_price,p.product_name,p.PRODUCT_MAIN_IMG
 FROM (SELECT ROW_NUMBER() OVER(ORDER BY id ASC) AS RNUM,product_no,id,shopping_basket_count,shopping_basket_price FROM SHOPPING_BASKET WHERE id='user1')s,HOMESHOPPING_PRODUCT p 
