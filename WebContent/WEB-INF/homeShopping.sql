@@ -63,6 +63,9 @@ CREATE SEQUENCE order_no_seq;
 --상품
 CREATE SEQUENCE product_no_seq; 
 
+DROP SEQUENCE order_no_seq;
+DROP SEQUENCE product_no_seq;
+
 
 
 
@@ -93,8 +96,37 @@ WHERE rnum BETWEEN 5 AND 15
 
 --상품 샘플 DB
 INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,product_main_img,product_possesion_count,PRODUCT_DATE,PRODUCT_KINDS) VALUES(
-product_no_seq.NEXTVAL,'테스트상품1',13500,'테스트상품내용입니다','resources/img/product/main/product_test.jpg',0,SYSDATE,'반팔'
-);
+product_no_seq.NEXTVAL,'유니섹스 파스텔 웰론 숏패딩 카키그레이 IRO053',99000,'아우터1-상세.jpg','아우터1.jpg',30,SYSDATE,'아우터');
+INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,product_main_img,product_possesion_count,PRODUCT_DATE,PRODUCT_KINDS) VALUES(
+product_no_seq.NEXTVAL,'유니섹스 파스텔 웰론 숏패딩 아이보리 IRO053',99000,'아우터2-상세.jpg','아우터2.jpg',30,SYSDATE,'아우터');
+INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,product_main_img,product_possesion_count,PRODUCT_DATE,PRODUCT_KINDS) VALUES(
+product_no_seq.NEXTVAL,'유니섹스 파스텔 웰론 숏패딩 블랙 IRO053',99000,'아우터3-상세.jpg','아우터3.jpg',30,SYSDATE,'아우터');
+INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,product_main_img,product_possesion_count,PRODUCT_DATE,PRODUCT_KINDS) VALUES(
+product_no_seq.NEXTVAL,'유니섹스 크루넥 시보리 웰론 숏패딩 화이트 IRO052',99000,'아우터4-상세.jpg','아우터4.jpg',30,SYSDATE,'아우터');
+INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,product_main_img,product_possesion_count,PRODUCT_DATE,PRODUCT_KINDS) VALUES(
+product_no_seq.NEXTVAL,' 유니섹스 크루넥 시보리 웰론 숏패딩 그레이 IRO052 ',99000,'아우터5-상세.jpg','아우터5.jpg',30,SYSDATE,'아우터');
+INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,product_main_img,product_possesion_count,PRODUCT_DATE,PRODUCT_KINDS) VALUES(
+product_no_seq.NEXTVAL,'유니섹스 크루넥 시보리 웰론 숏패딩 블랙 IRO052',99000,'아우터6-상세.jpg','아우터6.jpg',30,SYSDATE,'아우터');
+INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,product_main_img,product_possesion_count,PRODUCT_DATE,PRODUCT_KINDS) VALUES(
+product_no_seq.NEXTVAL,'유니섹스 크루넥 시보리 웰론 숏패딩 베이지 IRO052 ',99000,'아우터7-상세.jpg','아우터7.jpg',30,SYSDATE,'아우터');
+INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,product_main_img,product_possesion_count,PRODUCT_DATE,PRODUCT_KINDS) VALUES(
+product_no_seq.NEXTVAL,'20fw 디테처블 남성 패딩/8018731',99000,'아우터8-상세.jpg','아우터8.jpg',30,SYSDATE,'아우터');
+INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,product_main_img,product_possesion_count,PRODUCT_DATE,PRODUCT_KINDS) VALUES(
+product_no_seq.NEXTVAL,'20fw 라멘틴 남성 패딩/1B58300 539WF 999',99000,'아우터9-상세.jpg','아우터9.jpg',30,SYSDATE,'아우터');
+INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,product_main_img,product_possesion_count,PRODUCT_DATE,PRODUCT_KINDS) VALUES(
+product_no_seq.NEXTVAL,'20fw 쓰리쿼터 남성패딩/MK2228M3Q 402',99000,'아우터10-상세.jpg','아우터10.jpg',30,SYSDATE,'아우터');
+INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,product_main_img,product_possesion_count,PRODUCT_DATE,PRODUCT_KINDS) VALUES(
+product_no_seq.NEXTVAL,'20fw 남성 발리스틱 봄버 블랙퍼/MK2000MB 402',99000,'아우터11-상세.jpg','아우터11.jpg',30,SYSDATE,'아우터');
+INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,product_main_img,product_possesion_count,PRODUCT_DATE,PRODUCT_KINDS) VALUES(
+product_no_seq.NEXTVAL,'SA 덕 다운 후디 숏 패딩_블루 그레이',99000,'아우터12-상세.jpg','아우터12.jpg',30,SYSDATE,'아우터');
+INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,product_main_img,product_possesion_count,PRODUCT_DATE,PRODUCT_KINDS) VALUES(
+product_no_seq.NEXTVAL,'SA 덕 다운 후디 숏 패딩_블랙',99000,'아우터13-상세.jpg','아우터13.jpg',30,SYSDATE,'아우터');
+INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,product_main_img,product_possesion_count,PRODUCT_DATE,PRODUCT_KINDS) VALUES(
+product_no_seq.NEXTVAL,'SA 로열 라이더스 퍼 자켓_블랙',99000,'아우터14-상세.jpg','아우터14.jpg',30,SYSDATE,'아우터');
+INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,product_main_img,product_possesion_count,PRODUCT_DATE,PRODUCT_KINDS) VALUES(
+product_no_seq.NEXTVAL,'로고 UV0CNA316SQ A01 남자 패딩 점퍼 자켓 레귤러핏',99000,'아우터15-상세.jpg','아우터15.jpg',30,SYSDATE,'아우터');
+INSERT INTO HOMESHOPPING_PRODUCT(PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CONTENT,product_main_img,product_possesion_count,PRODUCT_DATE,PRODUCT_KINDS) VALUES(
+product_no_seq.NEXTVAL,'[패키지] 빅로고 양털 누빔 자켓 (3컬러)',99000,'아우터16-상세.jpg','아우터16.jpg',30,SYSDATE,'아우터');
 
 
 SELECT PRODUCT_NO,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_MAIN_IMG,PRODUCT_POSSESION_COUNT,PRODUCT_DATE,PRODUCT_TOTAL_SALE,PRODUCT_KINDS

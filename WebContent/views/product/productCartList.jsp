@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-<table>
+<div class="container">
+<table class="table">
 	<thead>
 		<tr>
 			<th>상품번호</th>
@@ -24,7 +24,7 @@
 		<tr>
 			<td>${cart.productVO.productNo}</td>
 			<td>${cart.productVO.productName}</td>
-			<td>${cart.productVO.productMainImg}</td>
+			<td style="width:150px;"><img src="${pageContext.request.contextPath}/resources/img/product/main/${cart.productVO.productMainImg}" style="width:100%;"></td>
 			<td>${cart.productVO.productPrice}</td>
 			<td>${cart.productVO.productNo}</td>
 			<td>
@@ -42,6 +42,7 @@
 	
 	</tbody>
 </table>
+</div>
 
 
 	

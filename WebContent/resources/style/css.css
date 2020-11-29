@@ -255,6 +255,10 @@ header .menubar nav ul li a:hover {
 	left: -100%;
 }
 
+#mainSlideForm ul li img{
+	width: 100%;
+}
+
 #mainSlideForm ul li:nth-child(1) {
 	left: 0;
 }

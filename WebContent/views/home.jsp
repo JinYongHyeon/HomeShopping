@@ -11,9 +11,9 @@
 	<div class="row">
 		<div class="col-sm-12" id="mainSlideForm">
 			<ul>
-				<li></li>
-				<li></li>
-				<li></li>
+				<li><img src="${pageContext.request.contextPath}/resources/img/slide1.png"></li>
+				<li><img src="${pageContext.request.contextPath}/resources/img/slide2.png"></li>
+				<li><img src="${pageContext.request.contextPath}/resources/img/slide3.png"></li>
 			</ul>
 			<div class="mainSlideBtn">
 				<button onclick="startSlide(0)"></button>

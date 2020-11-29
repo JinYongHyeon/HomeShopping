@@ -575,8 +575,8 @@ public class ProductDAO {
 				uvo.setId(rs.getString("id"));
 				basket.setShoppingBasketCount(rs.getInt("shopping_basket_count"));
 				pvo.setProductPrice(rs.getInt("shopping_basket_price"));
-				pvo.setProductName("product_name");
-				pvo.setProductMainImg("PRODUCT_MAIN_IMG");
+				pvo.setProductName(rs.getString("product_name"));
+				pvo.setProductMainImg(rs.getString("PRODUCT_MAIN_IMG"));
 				basket.setProductVO(pvo);
 				basket.setUserVO(uvo);
 				list.add(basket);

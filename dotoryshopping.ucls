@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="org.shopping.controller.DispatcherServlet" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/DispatcherServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2843" y="698"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="org.shopping.controller.ProductCountingController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/ProductCountingController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2827" y="1179"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="org.shopping.controller.ProductFindByListController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/ProductFindByListController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2825" y="1063"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="org.shopping.controller.ProductUpdateFormController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/ProductUpdateFormController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2821" y="1305"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="org.shopping.controller.UserFindByList" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/UserFindByList.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2821" y="1423"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="org.shopping.controller.ProductDeleteController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/ProductDeleteController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2829" y="953"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="org.shopping.controller.UserProductBuyRecordController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/UserProductBuyRecordController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2829" y="843"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="org.shopping.controller.UserLoginFormController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/UserLoginFormController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3131" y="1061"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="org.shopping.controller.UserImformationUpdateController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/UserImformationUpdateController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3137" y="951"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="org.shopping.controller.UserLoginController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/UserLoginController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3139" y="843"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="org.shopping.controller.UserIdCheckController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/UserIdCheckController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3138" y="1179"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="org.shopping.controller.ProductKindListController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/ProductKindListController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3136" y="1299"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="org.shopping.controller.ProductInsertFormController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/ProductInsertFormController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3449" y="841"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="org.shopping.controller.ProductAddCartController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/ProductAddCartController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3449" y="949"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="org.shopping.controller.UserLogoutController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/UserLogoutController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3449" y="1054"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="org.shopping.controller.OrderFormController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/OrderFormController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4067" y="949"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="org.shopping.controller.ProductDetailController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/ProductDetailController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4070" y="845"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="org.shopping.controller.ProductDeleteCartController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/ProductDeleteCartController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3785" y="1405"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="org.shopping.controller.UserSingUpController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/UserSingUpController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3450" y="1269"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="org.shopping.controller.HandlerMapping" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/HandlerMapping.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3104" y="713"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="org.shopping.controller.ProductInsertController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/ProductInsertController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4066" y="1067"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="org.shopping.controller.UserSingUpFormController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/UserSingUpFormController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3452" y="1165"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="org.shopping.controller.ProductImgUpdateController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/ProductImgUpdateController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4071" y="1186"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="org.shopping.controller.HomeController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/HomeController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3769" y="1263"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="org.shopping.controller.UserFindByIdController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/UserFindByIdController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3763" y="1160"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="org.shopping.controller.UserImformationFormController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/UserImformationFormController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2819" y="1542"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="org.shopping.controller.AjaxView" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/AjaxView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3353" y="699"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="org.shopping.controller.UserImformationUpdateFormController" 
+    project="homeShopping" file="/homeShopping/src/org/shopping/controller/UserImformationUpdateFormController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3135" y="1542"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="org.shopping.controller.ProductUpdateController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/ProductUpdateController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3449" y="1542"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="org.shopping.controller.UserProductFindByListController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/UserProductFindByListController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3765" y="1546"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="org.shopping.controller.OrderController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/OrderController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3758" y="840"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="org.shopping.controller.UserListController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/UserListController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3756" y="949"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="org.shopping.controller.ProductListController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/ProductListController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3757" y="1054"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="34" language="java" name="org.shopping.controller.Controller" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/Controller.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3479" y="1407"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="35" language="java" name="org.shopping.controller.ProductCartListController" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/controller/ProductCartListController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3133" y="1422"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="org.shopping.model.OrderVO" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/model/OrderVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1410" y="914"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="org.shopping.model.ProductVO" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/model/ProductVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1101" y="1004"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="org.shopping.model.ShoppingBasket" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/model/ShoppingBasket.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="221" x="925" y="277"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="org.shopping.model.UserVO" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/model/UserVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="784" y="949"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="org.shopping.model.PagingBean" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/model/PagingBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="405" width="179" x="80" y="277"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="org.shopping.model.ProductDAO" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/model/ProductDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="495" width="334" x="299" y="277"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="org.shopping.model.DataSourceManager" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/model/DataSourceManager.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="192" x="683" y="277"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="org.shopping.model.OrderDetailVO" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/model/OrderDetailVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="232" x="1529" y="277"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="org.shopping.model.UserDAO" project="homeShopping" 
+    file="/homeShopping/src/org/shopping/model/UserDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="293" x="1186" y="277"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="45">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <association id="46">    
+    <bendpoint x="934" y="822"/>    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="47" name="userVO"/>      
+      <multiplicity id="48" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="49">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="50">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <association id="51">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="52" name="instance"/>      
+      <multiplicity id="53" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="54">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="55">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <association id="56">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="57" name="instance"/>      
+      <multiplicity id="58" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="59">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="60">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="61">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="62">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="63">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="64">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="65">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <association id="66">    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="67" name="productVO"/>      
+      <multiplicity id="68" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="69">    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="70" name="orderVO"/>      
+      <multiplicity id="71" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="72">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="73">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="74">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <association id="75">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="76" name="userVO"/>      
+      <multiplicity id="77" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="78">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="79">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="80">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="81">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="82">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="83">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <association id="84">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="85" name="instance"/>      
+      <multiplicity id="86" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="87">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="88" name="instance"/>      
+      <multiplicity id="89" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="90">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="91">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="92">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="93">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="94">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="95">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="96">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <association id="97">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="98" name="productVO"/>      
+      <multiplicity id="99" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="100">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
